@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+  <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <title>404 - Abuzar's Portfolio</title>
+  <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="#" class="nav_logo">Abuzar</a>
+      <div class="nav_menu" id="nav-menu">
+        <ul class="nav_list grid">
+          <li class="nav_item">
+            <a href="#home" class="nav_link active-link">
+              <i class="uil uil-estate nav_icon"></i> Home
+            </a>
+          </li>
+          <li class="nav_item">
+            <a href="#about" class="nav_link">
+              <i class="uil uil-user nav_icon"></i> About
+            </a>
+          </li>
+          <li class="nav_item">
+            <a href="#qualification" class="nav_link">
+              <i class="uil uil-graduation-cap nav_icon"></i> Qualifications
+            </a>
+          </li>
+          <li class="nav_item">
+            <a href="#projects" class="nav_link">
+              <i class="uil uil-scenery nav_icon"></i> Projects
+            </a>
+          </li>
+          <li class="nav_item">
+            <a href="#contact" class="nav_link">
+              <i class="uil uil-message nav-icon nav_icon"></i> Contact
+            </a>
+          </li>
+          <li class="nav_item">
+            <a href="https://t.me/abzgif" class="nav_link">
+              <i class="uil uil-telegram-alt nav_icon"></i> Telegram
+            </a>
+          </li>
+        </ul>
+        <i class="uil uil-times nav_close" id="nav-close"></i>
+      </div>
+      <div class="nav_btns">
+        <!-- Change Theme -->
+        <i class="uil uil-moon change-theme" id="theme-button"></i>
+
+        <div class="nav_toggle" id="nav-toggle">
+          <i class="uil uil-apps"></i>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <main class="main">
+    <section class="home section" id="home">
+      <div class="container">
+        <iframe src="http://45.127.244.7:8080/hls/channel2.m3u8" width="100%" height="500" marginheight="0" marginwidth="0" scrolling="no" frameborder="0" allowfullscreen  allow="encrypted-media"><iframe>
+</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer_bg">
+      <div class="footer_container container grid">
+        <div>
+          <h1 class="footer_title">Abuzar Gifary</h1>
+          <span class="footer_subtitle">Frontend Developer</span>
+        </div>
+
+        <ul class="footer_links">
+          <li>
+            <a href="./index.html#about" class="footer_link">About</a>
+          </li>
+          <li>
+            <a href="./index.html#projects" class="footer_link">Projects</a>
+          </li>
+          <li>
+            <a href="./index.html#contact" class="footer_link">Contact</a>
+          </li>
+        </ul>
+
+        <div class="footer_socials">
+            <a href="https://m.me/abzgif" target="_blank" class="footer_social">
+            <i class="bx bxl-messenger"></i>
+          </a>
+          <a href="https://wa.me/+8801822150473" target="_blank" class="footer_social">
+            <i class="bx bxl-whatsapp"></i>
+          </a>
+          <a href="https://t.me/abzgif" target="_blank" class="footer_social">
+            <i class="bx bxl-telegram"></i>
+          </a>
+        </div>
+      </div>
+
+      <p class="footer_copy">&#169; Abuzar Gifary. All rights reserved</p>
+    </div>
+  </footer>
+
+  <script src="./assets/js/404-error.js"></script>
+</body>
+
+</html>
