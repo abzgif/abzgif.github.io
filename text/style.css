@@ -72,3 +72,12 @@ body{
     opacity: 1;
     pointer-events: auto;
 }
+
+.save-btn {
+  background-color: #73877B;
+  color: white;        /* Makes the button text white for contrast */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;  /* Optional: rounded corners */
+  cursor: pointer;     /* Optional: pointer cursor on hover */
+}
