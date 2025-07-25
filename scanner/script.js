@@ -1,38 +1,40 @@
-const wrapper = document.querySelector(".wrapper"),
-form = document.querySelector("form"),
-fileInp = form.querySelector("input"),
-infoText = form.querySelector("p"),
-closeBtn = document.querySelector(".close"),
-copyBtn = document.querySelector(".copy");
+const video = document.getElementById('video');
+const canvas = document.getElementById('canvas');
+const result = document.getElementById('result');
+const context = canvas.getContext('2d');
 
-function fetchRequest(file, formData) {
-    infoText.innerText = "Scanning QR Code...";
-    fetch("http://api.qrserver.com/v1/read-qr-code/", {
-        method: 'POST', body: formData
-    }).then(res => res.json()).then(result => {
-        result = result[0].symbol[0].data;
-        infoText.innerText = result ? "Upload QR Code to Scan" : "Couldn't scan QR Code";
-        if(!result) return;
-        document.querySelector("textarea").innerText = result;
-        form.querySelector("img").src = URL.createObjectURL(file);
-        wrapper.classList.add("active");
-    }).catch(() => {
-        infoText.innerText = "Couldn't scan QR Code";
-    });
+// Dark mode toggle
+const toggleBtn = document.getElementById('toggle-theme');
+toggleBtn.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+  toggleBtn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+});
+
+// Access the camera
+navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
+  .then(stream => {
+    video.srcObject = stream;
+    video.setAttribute("playsinline", true);
+    requestAnimationFrame(scanFrame);
+  })
+  .catch(err => {
+    result.textContent = "Camera access denied or not available.";
+    console.error(err);
+  });
+
+function scanFrame() {
+  if (video.readyState === video.HAVE_ENOUGH_DATA) {
+    canvas.hidden = false;
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+    const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+    const code = jsQR(imageData.data, canvas.width, canvas.height);
+
+    if (code) {
+      result.textContent = `Scanned: ${code.data}`;
+    }
+  }
+  requestAnimationFrame(scanFrame);
 }
-
-fileInp.addEventListener("change", async e => {
-    let file = e.target.files[0];
-    if(!file) return;
-    let formData = new FormData();
-    formData.append('file', file);
-    fetchRequest(file, formData);
-});
-
-copyBtn.addEventListener("click", () => {
-    let text = document.querySelector("textarea").textContent;
-    navigator.clipboard.writeText(text);
-});
-
-form.addEventListener("click", () => fileInp.click());
-closeBtn.addEventListener("click", () => wrapper.classList.remove("active"));
