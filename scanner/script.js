@@ -38,3 +38,31 @@ function scanFrame() {
   }
   requestAnimationFrame(scanFrame);
 }
+
+// File upload QR scan
+const fileInput = document.getElementById('file-upload');
+fileInput.addEventListener('change', function () {
+  const file = fileInput.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function () {
+    const img = new Image();
+    img.onload = function () {
+      canvas.width = img.width;
+      canvas.height = img.height;
+      context.drawImage(img, 0, 0);
+
+      const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+      const code = jsQR(imageData.data, canvas.width, canvas.height);
+
+      if (code) {
+        result.textContent = `Scanned from image: ${code.data}`;
+      } else {
+        result.textContent = 'No QR code found in image.';
+      }
+    };
+    img.src = reader.result;
+  };
+  reader.readAsDataURL(file);
+});
