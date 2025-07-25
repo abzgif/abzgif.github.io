@@ -4,8 +4,149 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/png" href="favicon.png" />
-  <link rel="stylesheet" href="styles.css" />
   <title>Image Background Remover</title>
+  <style>
+    :root {
+      --bg-color: #f4f0ff;
+      --text-color: #1c0438;
+      --primary-color: #673ab7;
+      --btn-color: #673ab7;
+      --btn-text: #fff;
+      --accent-color: #ff5252;
+      --success-color: #009579;
+    }
+
+    body.dark {
+      --bg-color: #1e1e2f;
+      --text-color: #ffffff;
+      --primary-color: #4527a0;
+      --btn-color: #4527a0;
+      --btn-text: #ffffff;
+      --accent-color: #ff7676;
+      --success-color: #26c6da;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: all 0.3s ease;
+    }
+
+    header {
+      background-color: var(--primary-color);
+      color: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .toggle-theme {
+      background: none;
+      border: 1px solid #ffffff90;
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      margin-bottom: 0.5rem;
+    }
+
+    .img {
+      margin: 1rem 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .img img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .btn {
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .custom-file-input {
+      background-color: transparent;
+      color: var(--primary-color);
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      color: var(--btn-text);
+      font-size: 1rem;
+    }
+
+    #removeBgButton {
+      background-color: var(--btn-color);
+    }
+
+    #reloadBtn {
+      background-color: var(--accent-color);
+    }
+
+    #downloadBtn {
+      background-color: var(--success-color);
+    }
+
+    .btn-container {
+      display: flex;
+      gap: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      text-decoration: none;
+      color: var(--primary-color);
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .btn-container {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Header -->
@@ -36,14 +177,13 @@
           type="button"
           id="removeBgButton"
           onclick="submitHandler()"
-          style="background-color: #673ab7"
         >
           <span class="btn__text">Upload</span>
         </button>
 
         <div class="btn-container">
-          <button onclick="reset()" id="reloadBtn" style="background-color: #ff5252">Reset</button>
-          <button onclick="downloadFile()" id="downloadBtn" style="background-color: #009579">Download</button>
+          <button onclick="reset()" id="reloadBtn">Reset</button>
+          <button onclick="downloadFile()" id="downloadBtn">Download</button>
         </div>
       </div>
     </form>
@@ -55,13 +195,12 @@
     <p><a href="/">← Back to Home</a></p>
   </footer>
 
-  <!-- Theme Script -->
+  <!-- Script -->
   <script>
     function toggleTheme() {
-      document.body.classList.toggle("dark");
+      document.body.classList.toggle('dark');
     }
   </script>
-
   <script src="script.js"></script>
 </body>
 </html>
