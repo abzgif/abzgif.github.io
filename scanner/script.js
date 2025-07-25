@@ -57,7 +57,8 @@ fileInput.addEventListener('change', function () {
       const code = jsQR(imageData.data, canvas.width, canvas.height);
 
       if (code) {
-        result.textContent = `Scanned from image: ${code.data}`;
+        result.value = `Scanned from image: ${code.data}`;
+result.value = `Scanned from camera: ${code.data}`;
       } else {
         result.textContent = 'No QR code found in image.';
       }
