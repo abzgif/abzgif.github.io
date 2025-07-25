@@ -1,69 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Save Text As File</title>
+  <title>Text File Creator</title>
   <script src="https://unpkg.com/pdf-lib@1.4.0/dist/pdf-lib.min.js"></script>
   <style>
     :root {
-      --primary-color: #d8b4f8;
-      --secondary-color: #f3e8ff;
-      --button-color: #a855f7;
-      --button-hover: #9333ea;
-      --text-color: #4b0082;
-      --background: #faf5ff;
-      --border-color: #e0c3fc;
-    }
+      --bg: #f8f8ff;
+      --card: #ffffff;
+      --text: #2e1065;
+      --border: #ccc;
+      --input-bg: #f0f0ff;
+      --button-bg: #5b21b6;
+      --button-hover: #4338ca;
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+      /* Night mode */
+      --bg-dark: #1e1e2f;
+      --card-dark: #2c2c40;
+      --text-dark: #e0e0ff;
+      --border-dark: #444;
+      --input-bg-dark: #3a3a50;
+      --button-bg-dark: #7c3aed;
+      --button-hover-dark: #a78bfa;
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--background);
-      color: var(--text-color);
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      transition: background-color 0.3s, color 0.3s;
     }
 
-    header,
-    footer {
-      background-color: var(--primary-color);
+    body.dark {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: var(--button-bg);
       color: white;
-      padding: 20px;
-      text-align: center;
+      padding: 15px 20px;
+    }
+
+    header h2 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    .toggle-theme {
+      background: none;
+      border: 1px solid white;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+
+    .toggle-theme:hover {
+      background-color: rgba(255, 255, 255, 0.1);
     }
 
     .wrapper {
-      max-width: 800px;
+      max-width: 700px;
       margin: 40px auto;
-      background-color: white;
-      border: 1px solid var(--border-color);
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      background-color: var(--card);
+      border: 1px solid var(--border);
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      transition: background-color 0.3s, border 0.3s;
+    }
+
+    body.dark .wrapper {
+      background-color: var(--card-dark);
+      border-color: var(--border-dark);
     }
 
     h1 {
       text-align: center;
       margin-bottom: 20px;
+      font-size: 1.5rem;
     }
 
     textarea {
       width: 100%;
-      height: 200px;
-      padding: 15px;
-      font-size: 16px;
+      height: 180px;
+      padding: 12px;
+      font-size: 1rem;
       border-radius: 8px;
-      border: 1px solid var(--border-color);
-      resize: vertical;
-      background-color: var(--secondary-color);
-      color: var(--text-color);
+      border: 1px solid var(--border);
+      background-color: var(--input-bg);
+      color: var(--text);
       margin-bottom: 20px;
+      resize: vertical;
+      transition: all 0.3s;
+    }
+
+    body.dark textarea {
+      background-color: var(--input-bg-dark);
+      border-color: var(--border-dark);
+      color: var(--text-dark);
     }
 
     .file-options {
@@ -81,26 +125,34 @@
     label {
       display: block;
       margin-bottom: 6px;
-      font-weight: 600;
+      font-weight: 500;
     }
 
     input[type="text"],
     select {
       width: 100%;
       padding: 10px;
-      font-size: 16px;
+      font-size: 1rem;
       border-radius: 8px;
-      border: 1px solid var(--border-color);
-      background-color: var(--secondary-color);
-      color: var(--text-color);
+      border: 1px solid var(--border);
+      background-color: var(--input-bg);
+      color: var(--text);
+      transition: all 0.3s;
+    }
+
+    body.dark input,
+    body.dark select {
+      background-color: var(--input-bg-dark);
+      border-color: var(--border-dark);
+      color: var(--text-dark);
     }
 
     .save-btn {
       display: block;
       width: 100%;
       padding: 12px;
-      font-size: 18px;
-      background-color: var(--button-color);
+      font-size: 1rem;
+      background-color: var(--button-bg);
       color: white;
       border: none;
       border-radius: 8px;
@@ -112,9 +164,20 @@
       background-color: var(--button-hover);
     }
 
-    footer h4 {
-      margin: 0;
-      font-weight: normal;
+    body.dark .save-btn {
+      background-color: var(--button-bg-dark);
+    }
+
+    body.dark .save-btn:hover {
+      background-color: var(--button-hover-dark);
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px 10px;
+      font-size: 0.9rem;
+      background-color: transparent;
+      color: inherit;
     }
   </style>
 </head>
@@ -122,7 +185,8 @@
 <body>
   <!-- Header -->
   <header>
-    <h2>Welcome to File Creator</h2>
+    <h2>File Creator</h2>
+    <button class="toggle-theme" onclick="toggleTheme()">🌙 Night Mode</button>
   </header>
 
   <!-- Main Content -->
@@ -132,7 +196,7 @@
     <div class="file-options">
       <div class="option file-name">
         <label>File Name</label>
-        <input type="text" placeholder="Enter file name">
+        <input type="text" placeholder="Enter file name" />
       </div>
       <div class="option save-as">
         <label>Save as</label>
@@ -155,10 +219,16 @@
 
   <!-- Footer -->
   <footer>
-    <h4>Based on open-source materials</h4>
+    <h4>Based on open-source materials | abzgif</h4>
   </footer>
+
+  <!-- Toggle Night Mode Script -->
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle("dark");
+    }
+  </script>
 
   <script src="script.js"></script>
 </body>
-
 </html>
