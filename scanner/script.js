@@ -58,7 +58,7 @@ fileInput.addEventListener('change', function () {
 
       if (code) {
         result.value = `Scanned from image: ${code.data}`;
-result.value = `Scanned from camera: ${code.data}`;
+
       } else {
         result.textContent = 'No QR code found in image.';
       }
