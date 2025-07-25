@@ -110,3 +110,36 @@ body.dark-mode #file-upload {
 canvas {
   display: none !important;
 }
+
+.result-wrapper {
+  margin: 1.5rem auto;
+  text-align: center;
+  width: 90%;
+  max-width: 600px;
+}
+
+.result-wrapper label {
+  font-weight: bold;
+  color: var(--accent-color);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+#result {
+  width: 100%;
+  min-height: 100px;
+  padding: 1rem;
+  font-size: 1rem;
+  resize: vertical;
+  border: 2px solid var(--accent-color);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  color: #333;
+}
+
+body.dark-mode #result {
+  background-color: #222;
+  color: #fff;
+  border-color: var(--dark-accent);
+}
