@@ -107,3 +107,6 @@ body.dark-mode #file-upload {
   color: white;
   border-color: var(--dark-accent);
 }
+canvas {
+  display: none !important;
+}
