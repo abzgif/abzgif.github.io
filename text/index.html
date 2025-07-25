@@ -2,34 +2,114 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Save Text As File</title>
-  <link rel="stylesheet" href="style.css">
   <script src="https://unpkg.com/pdf-lib@1.4.0/dist/pdf-lib.min.js"></script>
   <style>
-    body {
+    :root {
+      --primary-color: #d8b4f8;
+      --secondary-color: #f3e8ff;
+      --button-color: #a855f7;
+      --button-hover: #9333ea;
+      --text-color: #4b0082;
+      --background: #faf5ff;
+      --border-color: #e0c3fc;
+    }
+
+    * {
       margin: 0;
-      font-family: Arial, sans-serif;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--background);
+      color: var(--text-color);
     }
 
     header,
     footer {
-      background-color: #333;
+      background-color: var(--primary-color);
       color: white;
-      padding: 15px 20px;
+      padding: 20px;
       text-align: center;
     }
 
     .wrapper {
-      padding: 20px;
       max-width: 800px;
-      margin: 0 auto;
+      margin: 40px auto;
+      background-color: white;
+      border: 1px solid var(--border-color);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
 
     h1 {
       text-align: center;
+      margin-bottom: 20px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 200px;
+      padding: 15px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      resize: vertical;
+      background-color: var(--secondary-color);
+      color: var(--text-color);
+      margin-bottom: 20px;
+    }
+
+    .file-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .option {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    input[type="text"],
+    select {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background-color: var(--secondary-color);
+      color: var(--text-color);
+    }
+
+    .save-btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      font-size: 18px;
+      background-color: var(--button-color);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .save-btn:hover {
+      background-color: var(--button-hover);
     }
 
     footer h4 {
@@ -40,7 +120,6 @@
 </head>
 
 <body>
-
   <!-- Header -->
   <header>
     <h2>Welcome to File Creator</h2>
@@ -48,7 +127,7 @@
 
   <!-- Main Content -->
   <div class="wrapper">
-    <h1>Save Text As File</h1>
+    <h1>Text As File Creator</h1>
     <textarea required placeholder="Enter your text here"></textarea>
     <div class="file-options">
       <div class="option file-name">
