@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abuzar Gifary - Full-Stack Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+        #back-to-top {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    <header class="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-slate-200">
+        <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-2xl font-bold text-slate-900">
+                        Abuzar Gifary
+                    </a>
+                </div>
+                <div class="hidden md:flex md:items-center md:space-x-8">
+                    <a href="#about" class="font-medium text-slate-600 hover:text-indigo-600 transition-colors duration-200">About</a>
+                    <a href="#skills" class="font-medium text-slate-600 hover:text-indigo-600 transition-colors duration-200">Skills</a>
+                    <a href="#projects" class="font-medium text-slate-600 hover:text-indigo-600 transition-colors duration-200">Projects</a>
+                    <a href="#contact" class="font-medium text-slate-600 hover:text-indigo-600 transition-colors duration-200">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-slate-700 hover:text-indigo-600 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="md:hidden hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100 hover:text-indigo-600">About</a>
+                <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100 hover:text-indigo-600">Skills</a>
+                <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100 hover:text-indigo-600">Projects</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-100 hover:text-indigo-600">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <section id="hero" class="flex flex-col-reverse md:flex-row items-center justify-between py-24 md:py-32">
+            <div class="w-full md:w-1/2 text-center md:text-left mt-12 md:mt-0">
+                <span class="text-indigo-600 font-medium">Hello, I'm</span>
+                <h1 class="text-5xl md:text-6xl font-extrabold text-slate-900 mt-2 mb-6 leading-tight">
+                    Abuzar Gifary
+                </h1>
+                <p class="text-xl text-slate-600 mb-8 max-w-lg mx-auto md:mx-0">
+                    Full-Stack Developer building robust web applications and business management tools.
+                </p>
+                <a href="#contact" class="inline-block bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-indigo-700 transition-all duration-300 transform hover:-translate-y-0.5">
+                    Get In Touch
+                </a>
+            </div>
+            <div class="w-full md:w-1/2 flex justify-center">
+                <img src="images/hero_image.jpg" 
+                     alt="A photo of Abuzar Gifary"
+                     class="rounded-full w-64 h-64 md:w-96 md:h-96 object-cover shadow-xl border-8 border-white"
+                     onerror="this.src='https://placehold.co/400x400/e0e7ff/6366f1?text=AG';this.onerror=null;">
+            </div>
+        </section>
+
+        <section id="about" class="py-24">
+            <h2 class="text-4xl font-bold text-center mb-6 text-slate-900">About Me</h2>
+            <div class="space-y-6 text-lg text-slate-600 max-w-3xl mx-auto text-center">
+                <p>
+                    Hello! I'm Abuzar, a full-stack developer with 8 years of experience specializing in PHP, JavaScript, and database management. My passion is building robust, efficient, and scalable web solutions that solve real-world business problems.
+                </p>
+                <p>
+                    From custom WordPress plugins and themes to complex CRM systems and internal business management panels, I handle all aspects of development. I thrive on turning a client's idea into a functional, user-friendly product, focusing on clean code and long-term maintainability.
+                </p>
+                <p>
+                    I also provide complete, end-to-end packages for my clients, including domain purchasing, hosting setup, and a very fast project turnaround to get your business online quickly.
+                </p>
+            </div>
+        </section>
+
+        <section id="skills" class="py-24 bg-white rounded-2xl shadow-sm">
+            <div class="container mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-16 text-slate-900">What I Do</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    
+                    <div class="bg-slate-50 p-6 rounded-lg shadow-lg border border-slate-200">
+                        <div class="flex items-center space-x-4 mb-3">
+                            <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                            <h3 class="text-2xl font-bold text-slate-900">Frontend Development</h3>
+                        </div>
+                        <p class="text-slate-600">
+                            Crafting responsive and interactive user interfaces using modern web standards.
+                        </p>
+                        <p class="mt-3 text-sm text-indigo-600 font-medium">HTML, CSS, JavaScript (ES6+), React, Tailwind CSS</p>
+                    </div>
+
+                    <div class="bg-slate-50 p-6 rounded-lg shadow-lg border border-slate-200">
+                        <div class="flex items-center space-x-4 mb-3">
+                            <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"></path></svg>
+                            <h3 class="text-2xl font-bold text-slate-900">Backend Development</h3>
+                        </div>
+                        <p class="text-slate-600">
+                            Building secure server-side logic, APIs, and business automation.
+                        </p>
+                        <p class="mt-3 text-sm text-indigo-600 font-medium">PHP, Node.js, Laravel, Express, REST APIs</p>
+                    </div>
+
+                    <div class="bg-slate-50 p-6 rounded-lg shadow-lg border border-slate-200">
+                        <div class="flex items-center space-x-4 mb-3">
+                            <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
+                            <h3 class="text-2xl font-bold text-slate-900">Database Management</h3>
+                        </div>
+                        <p class="text-slate-600">
+                            Designing and optimizing efficient, secure, and reliable database structures.
+                        </p>
+                        <p class="mt-3 text-sm text-indigo-600 font-medium">SQL, MySQL, PostgreSQL, MongoDB, Database Design</p>
+                    </div>
+
+                    <div class="bg-slate-50 p-6 rounded-lg shadow-lg border border-slate-200">
+                        <div class="flex items-center space-x-4 mb-3">
+                            <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                            <h3 class="text-2xl font-bold text-slate-900">Full Web Solutions</h3>
+                        </div>
+                        <p class="text-slate-600">
+                            Building complete websites from start to finish: e-commerce, portfolios, corporate sites, and blogs.
+                        </p>
+                        <p class="mt-3 text-sm text-indigo-600 font-medium">WordPress, E-commerce, Corporate Sites, Blog/Magazine, Domain & Hosting</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="py-24">
+            <h2 class="text-4xl font-bold text-center mb-16 text-slate-900">Featured Projects</h2>
+            <div class="flex flex-row flex-wrap justify-center items-start gap-10">
+                
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 border border-slate-200 w-full max-w-sm sm:w-[22rem]">
+                    <img src="images/carelifebangladesh.jpg" 
+                         alt="CareLife Bangladesh Website" 
+                         class="w-full h-48 object-cover"
+                         onerror="this.src='https://placehold.co/600x400/e0e7ff/6366f1?text=CareLife';this.onerror=null;">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2 text-slate-900">
+                            CareLife Bangladesh
+                        </h3>
+                        <p class="text-slate-600 mb-4">
+                            A professional corporate website for CareLife Bangladesh, built to be fast, responsive, and informative for their clients.
+                        </p>
+                        <div class="flex gap-4">
+                            <a href="http://carelifebangladesh.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-indigo-600 text-white text-sm font-medium py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors duration-200">
+                                Visit Now
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- My second project card here. -->
+                <!--
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 border border-slate-200 w-full max-w-sm sm:w-[22rem]">
+                    <img src="images/your-project-image.jpg" 
+                         alt="Project 2" 
+                         class="w-full h-48 object-cover"
+                         onerror="this.src='https://placehold.co/600x400/e0e7ff/6366f1?text=Project+2';this.onerror=null;">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2 text-slate-900">
+                            Project Title Two
+                        </h3>
+                        <p class="text-slate-600 mb-4">
+                            A brief description of the project, what it does, and the technologies used. Keep it concise.
+                        </p>
+                        <div class="flex gap-4">
+                            <a href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-indigo-600 text-white text-sm font-medium py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors duration-200">
+                                Visit Now
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                -->
+                
+                <!-- my third project card here. -->
+                <!--
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 border border-slate-200 w-full max-w-sm sm:w-[22rem]">
+                    <img src="images/your-project-image.jpg" 
+                         alt="Project 3" 
+                         class="w-full h-48 object-cover"
+                         onerror="this.src='https://placehold.co/600x400/e0e7ff/6366f1?text=Project+3';this.onerror=null;">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2 text-slate-900">
+                            Project Title Three
+                        </h3>
+                        <p class="text-slate-600 mb-4">
+                            A brief description of the project, what it does, and the technologies used. Keep it concise.
+                        </p>
+                        <div class="flex gap-4">
+                            <a href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-indigo-600 text-white text-sm font-medium py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors duration-200">
+                                Visit Now
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                -->
+                
+                <!-- My fourth project card here. -->
+                <!--
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 border border-slate-200 w-full max-w-sm sm:w-[22rem]">
+                    <img src="images/your-project-image.jpg" 
+                         alt="Project 4" 
+                         class="w-full h-48 object-cover"
+                         onerror="this.src='https://placehold.co/600x400/e0e7ff/6366f1?text=Project+4';this.onerror=null;">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2 text-slate-900">
+                            Project Title Four
+                        </h3>
+                        <p class="text-slate-600 mb-4">
+                            A brief description of the project, what it does, and the technologies used. Keep it concise.
+                        </g>
+                        <div class="flex gap-4">
+                            <a href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-indigo-600 text-white text-sm font-medium py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors duration-200">
+                                Visit Now
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                -->
+
+            </div>
+        </section>
+
+        <section id="contact" class="py-24">
+            <h2 class="text-4xl font-bold text-center mb-6 text-slate-900">Contact Me</h2>
+            <p class="text-lg text-slate-600 text-center max-w-xl mx-auto mb-12">
+                Want to connect? My inbox is always open!
+            </p>
+
+            <div class="flex flex-col md:flex-row items-center md:items-start justify-center gap-16 max-w-4xl mx-auto">
+                <div class="w-full md:w-1/3 space-y-8 text-left">
+                    <div class="flex items-center justify-start space-x-4">
+                        <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        <div>
+                            <p class="font-semibold text-slate-900">Email</p>
+                            <a href="mailto:abuzar@duck.com" class="text-indigo-600 hover:underline">abuzar@duck.com</a>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-start space-x-4">
+                        <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                        <div>
+                            <p class="font-semibold text-slate-900">Messenger</p>
+                            <a href="https://m.me/abzgif" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">abzgif</a>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-start space-x-4">
+                        <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+                        <div>
+                            <p class="font-semibold text-slate-900">Telegram</p>
+                            <a href="https://t.me/abzgif" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">@abzgif</a>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-start space-x-4">
+                        <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        <div>
+                            <p class="font-semibold text-slate-900">Location</p>
+                            <p class="text-slate-600">Kushtia, Bangladesh</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full md:w-2/3 bg-white p-8 rounded-xl shadow-lg border border-slate-200">
+                    <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
+                        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                        <input type="hidden" name="subject" value="New Contact Form Submission from Portfolio">
+                        <input type="hidden" name="from_name" value="Portfolio Site">
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="sr-only">Name</label>
+                                <input type="text" name="name" id="name" autocomplete="name" placeholder="Name" required
+                                       class="block w-full rounded-md border-0 bg-indigo-50/50 px-4 py-3 text-slate-900 shadow-sm ring-1 ring-inset ring-indigo-200 placeholder:text-slate-500 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            </div>
+                            <div>
+                                <label for="email" class="sr-only">Email</label>
+                                <input type="email" name="email" id="email" autocomplete="email" placeholder="Email" required
+                                       class="block w-full rounded-md border-0 bg-indigo-50/50 px-4 py-3 text-slate-900 shadow-sm ring-1 ring-inset ring-indigo-200 placeholder:text-slate-500 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="form-subject" class="sr-only">Subject</label>
+                            <input type="text" name="form-subject" id="form-subject" placeholder="Subject"
+                                   class="block w-full rounded-md border-0 bg-indigo-50/50 px-4 py-3 text-slate-900 shadow-sm ring-1 ring-inset ring-indigo-200 placeholder:text-slate-500 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        </div>
+                        <div>
+                            <label for="message" class="sr-only">Message</label>
+                            <textarea id="message" name="message" rows="6" placeholder="Message" required
+                                      class="block w-full rounded-md border-0 bg-indigo-50/50 px-4 py-3 text-slate-900 shadow-sm ring-1 ring-inset ring-indigo-200 placeholder:text-slate-500 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
+                        </div>
+                        <div id="form-result" class="mt-4"></div>
+                        <button type="submit" class="inline-flex items-center gap-2 bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-indigo-700 transition-all duration-300 transform hover:-translate-y-0.5">
+                            Send Message
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-colors duration-200 z-50">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+
+    <footer class="bg-white border-t border-slate-200 mt-24">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <p class="text-center text-slate-500">
+                &copy; <span id="current-year"></span> Abuzar Gifary. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        const backToTopButton = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.style.display = 'flex';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        const form = document.getElementById('contact-form');
+        const formResult = document.getElementById('form-result');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            formResult.innerHTML = '<p class="text-slate-600">Sending...</p>';
+            
+            const formData = new FormData(form);
+            
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    formResult.innerHTML = '<p class="text-green-600">Message sent successfully!</p>';
+                    form.reset();
+                } else {
+                    formResult.innerHTML = `<p class="text-red-600">Oops! Something went wrong. ${data.message || ''}</p>`;
+                }
+            } catch (error) {
+                formResult.innerHTML = `<p class="text-red-600">Oops! Something went wrong. Please try again later.</p>`;
+            }
+
+            setTimeout(() => {
+                formResult.innerHTML = '';
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
+
