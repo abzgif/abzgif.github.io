@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abuzar Gifary - Full-Stack Developer</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicons/favicon-16x16.png">
+    <link rel="manifest" href="images/favicons/site.webmanifest">
+    <link rel="mask-icon" href="images/favicons/safari-pinned-tab.svg" color="#4f46e5">
+    <link rel="shortcut icon" href="images/favicons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-config" content="images/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            900: '#134e4a',
+                            950: '#042f2e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+
+        #back-to-top {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="bg-zinc-50 dark:bg-slate-900 text-zinc-800 dark:text-slate-200 antialiased transition-colors duration-300">
+
+    <script>
+        // Check for saved user preference, if any, on load of the website
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+
+    <header
+        class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md sticky top-0 z-50 border-b border-zinc-200 dark:border-slate-800 transition-colors duration-300">
+        <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
+                        Abuzar's Portfolio
+                    </a>
+                </div>
+                <div class="hidden md:flex md:items-center md:space-x-8">
+                    <a href="#about"
+                        class="font-medium text-zinc-600 dark:text-zinc-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200">About</a>
+                    <a href="#skills"
+                        class="font-medium text-zinc-600 dark:text-zinc-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200">Skills</a>
+                    <a href="#projects"
+                        class="font-medium text-zinc-600 dark:text-zinc-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200">Projects</a>
+                    <a href="#contact"
+                        class="font-medium text-zinc-600 dark:text-zinc-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200">Contact</a>
+                </div>
+                <div class="flex items-center space-x-2 md:space-x-4">
+                    <button id="theme-toggle" type="button"
+                        class="text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:outline-none focus:ring-4 focus:ring-zinc-200 dark:focus:ring-zinc-700 rounded-lg text-sm p-2.5 transition-colors">
+                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                                fill-rule="evenodd" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    <div class="md:hidden flex items-center">
+                        <button id="mobile-menu-btn"
+                            class="text-zinc-700 dark:text-zinc-300 hover:text-indigo-600 dark:hover:text-indigo-400 focus:outline-none transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h16m-7 6h7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div id="mobile-menu"
+            class="md:hidden hidden bg-white dark:bg-slate-900 border-b border-zinc-200 dark:border-slate-800 transition-colors duration-300">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-900 hover:text-indigo-600 dark:hover:text-indigo-400">About</a>
+                <a href="#skills"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-900 hover:text-indigo-600 dark:hover:text-indigo-400">Skills</a>
+                <a href="#projects"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-900 hover:text-indigo-600 dark:hover:text-indigo-400">Projects</a>
+                <a href="#contact"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-900 hover:text-indigo-600 dark:hover:text-indigo-400">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <section id="hero" class="flex flex-col-reverse md:flex-row items-center justify-between py-24 md:py-32">
+            <div class="w-full md:w-1/2 text-center md:text-left mt-12 md:mt-0">
+                <span class="text-indigo-600 font-medium">Hello, I'm</span>
+                <h1
+                    class="text-5xl md:text-6xl font-extrabold text-slate-900 dark:text-slate-50 mt-2 mb-6 leading-tight">
+                    Abuzar Gifary
+                </h1>
+                <p class="text-xl text-slate-600 max-w-lg mx-auto md:mx-0">
+                    Full-Stack Web Developer
+                </p>
+
+                <div class="flex justify-center md:justify-start space-x-6 mt-6 mb-8">
+                    <!-- GitHub -->
+                    <a href="https://github.com/abzgif" target="_blank" rel="noopener noreferrer" title="GitHub"
+                        class="text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 dark:text-zinc-400 hover:scale-110 transform transition-all duration-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                            aria-label="GitHub">
+                            <path
+                                d="M15 22v-4a4.8 4.8 0 0 0-1-3.2c3-.3 6-1.5 6-6.5a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 5 3 6.2 6 6.5a4.8 4.8 0 0 0-1 3.2v4">
+                            </path>
+                        </svg>
+                    </a>
+                    <!-- Facebook -->
+                    <a href="https://facebook.com/abzgif" target="_blank" rel="noopener noreferrer" title="Facebook"
+                        class="text-zinc-500 hover:text-[#1877F2] dark:hover:text-[#1877F2] dark:text-zinc-400 hover:scale-110 transform transition-all duration-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                            aria-label="Facebook">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </a>
+                    <!-- Instagram -->
+                    <a href="https://instagram.com/abzgif" target="_blank" rel="noopener noreferrer" title="Instagram"
+                        class="text-zinc-500 hover:text-[#E4405F] dark:hover:text-[#E4405F] dark:text-zinc-400 hover:scale-110 transform transition-all duration-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                            aria-label="Instagram">
+                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                        </svg>
+                    </a>
+                </div>
+
+                <a href="#contact"
+                    class="inline-block bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-indigo-700 transition-all duration-300 transform hover:-translate-y-0.5">
+                    Get In Touch
+                </a>
+            </div>
+            <div class="w-full md:w-1/2 flex justify-center">
+                <img src="images/hero_image.jpg" alt="A photo of Abuzar Gifary"
+                    class="rounded-full w-64 h-64 md:w-96 md:h-96 object-cover shadow-xl border-8 border-white"
+                    onerror="this.src='https://placehold.co/400x400/e0e7ff/6366f1?text=AG';this.onerror=null;">
+            </div>
+        </section>
+
+        <section id="about" class="py-24 transition-colors duration-300">
+            <h2 class="text-4xl font-bold text-center mb-6 text-zinc-900 dark:text-zinc-50">About Me</h2>
+            <div class="space-y-6 text-lg text-zinc-600 dark:text-zinc-400 max-w-3xl mx-auto text-left">
+                <p>
+                    Hello! I'm Abuzar, a full-stack developer with 8 years of experience specializing in PHP,
+                    JavaScript, and database management. My passion is building robust, efficient, and scalable web
+                    solutions that solve real-world business problems.
+                </p>
+                <p>
+                    From custom WordPress plugins and themes to complex CRM systems and internal business management
+                    panels, I handle all aspects of development. I thrive on turning a client's idea into a functional,
+                    user-friendly product, focusing on clean code and long-term maintainability.
+                </p>
+                <p>
+                    I also provide complete, end-to-end packages for my clients, including domain purchasing, hosting
+                    setup, and a very fast project turnaround to get your business online quickly.
+                </p>
+            </div>
+        </section>
+
+        <section id="skills"
+            class="py-24 bg-white dark:bg-zinc-900/50 rounded-2xl shadow-[0_4px_40px_-15px_rgba(0,0,0,0.05)] border border-transparent dark:border-zinc-800/50 transition-colors duration-300">
+            <div class="container mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-16 text-zinc-900 dark:text-zinc-50">What I Do</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+
+                    <div
+                        class="bg-zinc-50/50 dark:bg-zinc-900/50 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-zinc-200/50 dark:border-zinc-800">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <div
+                                class="p-2.5 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 rounded-lg">
+                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-zinc-900 dark:text-zinc-50">Frontend Development</h3>
+                        </div>
+                        <p class="text-zinc-600 dark:text-zinc-400">
+                            Crafting responsive and interactive user interfaces using modern web standards.
+                        </p>
+                        <p
+                            class="mt-4 text-sm text-indigo-600 dark:text-indigo-400 font-semibold tracking-wide uppercase text-[11px]">
+                            HTML, CSS, JavaScript, React, Tailwind</p>
+                    </div>
+
+                    <div
+                        class="bg-zinc-50/50 dark:bg-zinc-900/50 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-zinc-200/50 dark:border-zinc-800">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <div
+                                class="p-2.5 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 rounded-lg">
+                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 12h14M12 5l7 7-7 7"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-zinc-900 dark:text-zinc-50">Backend Development</h3>
+                        </div>
+                        <p class="text-zinc-600 dark:text-zinc-400">
+                            Building secure server-side logic, APIs, and business automation.
+                        </p>
+                        <p
+                            class="mt-4 text-sm text-indigo-600 dark:text-indigo-400 font-semibold tracking-wide uppercase text-[11px]">
+                            PHP, Node.js, Laravel, Express, REST APIs</p>
+                    </div>
+
+                    <div
+                        class="bg-zinc-50/50 dark:bg-zinc-900/50 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-zinc-200/50 dark:border-zinc-800">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <div
+                                class="p-2.5 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 rounded-lg">
+                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4">
+                                    </path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-zinc-900 dark:text-zinc-50">Database Management</h3>
+                        </div>
+                        <p class="text-zinc-600 dark:text-zinc-400">
+                            Designing and optimizing efficient, secure, and reliable database structures.
+                        </p>
+                        <p
+                            class="mt-4 text-sm text-indigo-600 dark:text-indigo-400 font-semibold tracking-wide uppercase text-[11px]">
+                            SQL, MySQL, PostgreSQL, MongoDB</p>
+                    </div>
+
+                    <div
+                        class="bg-zinc-50/50 dark:bg-zinc-900/50 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-zinc-200/50 dark:border-zinc-800">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <div
+                                class="p-2.5 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 rounded-lg">
+                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9">
+                                    </path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-zinc-900 dark:text-zinc-50">Full Web Solutions</h3>
+                        </div>
+                        <p class="text-zinc-600 dark:text-zinc-400">
+                            Building complete websites from start to finish: e-commerce, portfolios, corporate sites.
+                        </p>
+                        <p
+                            class="mt-4 text-sm text-indigo-600 dark:text-indigo-400 font-semibold tracking-wide uppercase text-[11px]">
+                            WordPress, E-commerce, Corporate Sites</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="py-24 transition-colors duration-300">
+            <h2 class="text-4xl font-bold text-center mb-16 text-zinc-900 dark:text-zinc-50">Featured Projects</h2>
+            <div class="flex flex-row flex-wrap justify-center items-start gap-10">
+
+                <div
+                    class="bg-white dark:bg-slate-800/80 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-zinc-200 dark:border-slate-700 w-full max-w-sm sm:w-[22rem] flex flex-col group">
+                    <div
+                        class="w-full relative overflow-hidden rounded-t-2xl bg-slate-50 dark:bg-slate-900/50 flex justify-center items-start">
+                        <img src="images/carelifebangladesh.jpg" alt="CareLife Bangladesh Website"
+                            class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
+                            onerror="this.src='https://placehold.co/600x400/e0e7ff/6366f1?text=CareLife';this.onerror=null;">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold mb-2 text-zinc-900 dark:text-zinc-50">
+                            Care Life Bangladesh
+                        </h3>
+                        <p class="text-zinc-600 dark:text-zinc-400 mb-6 flex-grow">
+                            A professional corporate website for Care Life Bangladesh company, built to be fast,
+                            responsive, and informative for their clients.
+                        </p>
+                        <div class="flex gap-4">
+                            <a href="http://carelifebangladesh.com" target="_blank" rel="noopener noreferrer"
+                                class="inline-flex items-center gap-2 bg-indigo-600 text-white text-sm font-medium py-2.5 px-5 rounded-xl hover:bg-indigo-700 transition-colors duration-200 shadow-sm">
+                                Visit Now
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add your second project card here. -->
+                <div
+                    class="bg-white dark:bg-slate-800/80 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-zinc-200 dark:border-slate-700 w-full max-w-sm sm:w-[22rem] flex flex-col group">
+                    <div
+                        class="w-full relative overflow-hidden rounded-t-2xl bg-slate-50 dark:bg-slate-900/50 flex justify-center items-start">
+                        <img src="images/jbdc.jpg" alt="JBDC Webapp"
+                            class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
+                            onerror="this.src='https://placehold.co/600x400/e0e7ff/6366f1?text=Project+2';this.onerror=null;">
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-2xl font-bold mb-2 text-zinc-900 dark:text-zinc-50">
+                            JBDC Webapp
+                        </h3>
+                        <p class="text-zinc-600 dark:text-zinc-400 mb-6 flex-grow">
+                            A complete web application for blood donation management with functional admin and doner
+                            panel. Super minimal design with realtime statistics.
+                        </p>
+                        <div class="flex gap-4">
+                            <a href="https://jbdc-app.web.app" target="_blank" rel="noopener noreferrer"
+                                class="inline-flex items-center gap-2 bg-indigo-600 text-white text-sm font-medium py-2.5 px-5 rounded-xl hover:bg-indigo-700 transition-colors duration-200 shadow-sm">
+                                Visit Now
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add your third project card here. -->
+                <!--
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 border border-slate-200 w-full max-w-sm sm:w-[22rem]">
+                    <img src="images/your-project-image.jpg" 
+                         alt="Project 3" 
+                         class="w-full h-48 object-cover"
+                         onerror="this.src='https://placehold.co/600x400/e0e7ff/6366f1?text=Project+3';this.onerror=null;">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2 text-slate-900">
+                            Project Title Three
+                        </h3>
+                        <p class="text-slate-600 mb-4">
+                            A brief description of the project, what it does, and the technologies used. Keep it concise.
+                        </p>
+                        <div class="flex gap-4">
+                            <a href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-indigo-600 text-white text-sm font-medium py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors duration-200">
+                                Visit Now
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                -->
+
+                <!-- Add your fourth project card here (it will wrap and center). -->
+                <!--
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 border border-slate-200 w-full max-w-sm sm:w-[22rem]">
+                    <img src="images/your-project-image.jpg" 
+                         alt="Project 4" 
+                         class="w-full h-48 object-cover"
+                         onerror="this.src='https://placehold.co/600x400/e0e7ff/6366f1?text=Project+4';this.onerror=null;">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2 text-slate-900">
+                            Project Title Four
+                        </h3>
+                        <p class="text-slate-600 mb-4">
+                            A brief description of the project, what it does, and the technologies used. Keep it concise.
+                        </p>
+                        <div class="flex gap-4">
+                            <a href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-indigo-600 text-white text-sm font-medium py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors duration-200">
+                                Visit Now
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                -->
+
+            </div>
+        </section>
+
+        <section id="contact" class="py-24 transition-colors duration-300">
+            <h2 class="text-4xl font-bold text-center mb-6 text-zinc-900 dark:text-zinc-50">Contact Me</h2>
+            <p class="text-lg text-zinc-600 dark:text-zinc-400 text-center max-w-xl mx-auto mb-12">
+                Want to connect? My inbox is always open!
+            </p>
+
+            <div class="flex flex-col md:flex-row items-center md:items-start justify-center gap-16 max-w-4xl mx-auto">
+                <div class="w-full md:w-1/3 space-y-8 text-left">
+                    <div class="flex items-center justify-start space-x-4">
+                        <div
+                            class="h-10 w-10 shrink-0 flex items-center justify-center rounded-lg bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-zinc-900 dark:text-zinc-50">Email</p>
+                            <a href="mailto:abuzar@duck.com"
+                                class="text-zinc-600 dark:text-zinc-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">abuzar@duck.com</a>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-start space-x-4">
+                        <div
+                            class="h-10 w-10 shrink-0 flex items-center justify-center rounded-lg bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-zinc-900 dark:text-zinc-50">Messenger</p>
+                            <a href="https://m.me/abzgif" target="_blank" rel="noopener noreferrer"
+                                class="text-zinc-600 dark:text-zinc-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">abzgif</a>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-start space-x-4">
+                        <div
+                            class="h-10 w-10 shrink-0 flex items-center justify-center rounded-lg bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="m22 2-7 20-4-9-9-4Z"></path>
+                                <path d="M22 2 11 13"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-zinc-900 dark:text-zinc-50">Telegram</p>
+                            <a href="https://t.me/abzgif" target="_blank" rel="noopener noreferrer"
+                                class="text-zinc-600 dark:text-zinc-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">@abzgif</a>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-start space-x-4">
+                        <div
+                            class="h-10 w-10 shrink-0 flex items-center justify-center rounded-lg bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-zinc-900 dark:text-zinc-50">Location</p>
+                            <p class="text-zinc-600 dark:text-zinc-400">Kushtia, Bangladesh</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="w-full md:w-2/3 bg-white dark:bg-slate-900/50 p-8 rounded-2xl shadow-sm border border-zinc-200/50 dark:border-slate-800 transition-colors duration-300">
+                    <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
+                        <input type="hidden" name="access_key" value="909861f0-e746-4e4e-81aa-3de913bd1b99">
+                        <input type="hidden" name="subject" value="New Contact Form Submission from Portfolio">
+                        <input type="hidden" name="from_name" value="Portfolio Site">
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="sr-only">Name</label>
+                                <input type="text" name="name" id="name" autocomplete="name" placeholder="Name" required
+                                    class="block w-full rounded-xl border-0 bg-zinc-50 dark:bg-slate-950/50 px-4 py-3 text-zinc-900 dark:text-zinc-100 shadow-sm ring-1 ring-inset ring-zinc-200 dark:ring-slate-800 placeholder:text-zinc-500 dark:placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6 transition-colors">
+                            </div>
+                            <div>
+                                <label for="email" class="sr-only">Email</label>
+                                <input type="email" name="email" id="email" autocomplete="email" placeholder="Email"
+                                    required
+                                    class="block w-full rounded-xl border-0 bg-zinc-50 dark:bg-slate-950/50 px-4 py-3 text-zinc-900 dark:text-zinc-100 shadow-sm ring-1 ring-inset ring-zinc-200 dark:ring-slate-800 placeholder:text-zinc-500 dark:placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6 transition-colors">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="form-subject" class="sr-only">Subject</label>
+                            <input type="text" name="form-subject" id="form-subject" placeholder="Subject"
+                                class="block w-full rounded-xl border-0 bg-zinc-50 dark:bg-slate-950/50 px-4 py-3 text-zinc-900 dark:text-zinc-100 shadow-sm ring-1 ring-inset ring-zinc-200 dark:ring-slate-800 placeholder:text-zinc-500 dark:placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6 transition-colors">
+                        </div>
+                        <div>
+                            <label for="message" class="sr-only">Message</label>
+                            <textarea id="message" name="message" rows="6" placeholder="Message" required
+                                class="block w-full rounded-xl border-0 bg-zinc-50 dark:bg-slate-950/50 px-4 py-3 text-zinc-900 dark:text-zinc-100 shadow-sm ring-1 ring-inset ring-zinc-200 dark:ring-slate-800 placeholder:text-zinc-500 dark:placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6 transition-colors"></textarea>
+                        </div>
+                        <div id="form-result" class="mt-4 text-sm font-medium"></div>
+                        <button type="submit"
+                            class="inline-flex items-center gap-2 bg-indigo-600 text-white font-bold py-3 pt-[0.85rem] px-6 rounded-xl hover:bg-indigo-700 transition-all duration-300 transform hover:-translate-y-0.5 shadow-sm">
+                            Send Message
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-1" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <button id="back-to-top"
+        class="fixed bottom-8 right-8 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-colors duration-200 z-50">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+
+    <footer
+        class="bg-white dark:bg-slate-900 border-t border-zinc-200 dark:border-slate-800 mt-24 transition-colors duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <p class="text-center text-zinc-500 dark:text-zinc-400">
+                &copy; <span id="current-year"></span> Abuzar Gifary. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        const backToTopButton = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.style.display = 'flex';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        const form = document.getElementById('contact-form');
+        const formResult = document.getElementById('form-result');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            formResult.innerHTML = '<p class="text-slate-600">Sending...</p>';
+
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    formResult.innerHTML = '<p class="text-green-600">Message sent successfully!</p>';
+                    form.reset();
+                } else {
+                    formResult.innerHTML = `<p class="text-red-600">Oops! Something went wrong. ${data.message || ''}</p>`;
+                }
+            } catch (error) {
+                formResult.innerHTML = `<p class="text-red-600">Oops! Something went wrong. Please try again later.</p>`;
+            }
+
+            setTimeout(() => {
+                formResult.innerHTML = '';
+            }, 5000);
+        });
+
+        // Theme Toggle Logic
+        const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+        const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+        // Change the icons inside the button based on previous settings
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            themeToggleLightIcon.classList.remove('hidden');
+        } else {
+            themeToggleDarkIcon.classList.remove('hidden');
+        }
+
+        const themeToggleBtn = document.getElementById('theme-toggle');
+
+        themeToggleBtn.addEventListener('click', function () {
+            // toggle icons inside button
+            themeToggleDarkIcon.classList.toggle('hidden');
+            themeToggleLightIcon.classList.toggle('hidden');
+
+            // if set via local storage previously
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                }
+            } else {
+                // if NOT set via local storage previously
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
