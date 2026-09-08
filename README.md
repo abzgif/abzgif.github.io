@@ -1,1 +1,1 @@
-# Abuzar Gifary - Personal Portfolio
+Abuzar Gifary - Personal Portfolio
