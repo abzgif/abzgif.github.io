@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abuzar Gifary - Full-Stack Developer</title>
+    <title>Abuzar Gifary — Full-Stack Web &amp; App Developer</title>
+    <meta name="description"
+        content="Abuzar Gifary — Full-Stack Web & Native Application Developer with 9+ years of experience and Founder of ByteGif (bytegif.com). Building websites, web apps, and privacy-first Android & macOS software.">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicons/favicon-16x16.png">
     <link rel="shortcut icon" href="images/favicons/favicon.ico">
@@ -15,15 +17,9 @@
             darkMode: 'class',
             theme: {
                 extend: {
-                    colors: {
-                        brand: {
-                            50: '#f0fdfa',
-                            100: '#ccfbf1',
-                            500: '#14b8a6',
-                            600: '#0d9488',
-                            900: '#134e4a',
-                            950: '#042f2e',
-                        }
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
                     }
                 }
             }
@@ -31,502 +27,1029 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+        }
+
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image:
+                linear-gradient(to right, rgba(161, 161, 170, 0.07) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(161, 161, 170, 0.07) 1px, transparent 1px);
         }
 
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 6px;
+            height: 6px;
         }
 
         ::-webkit-scrollbar-track {
-            background: #f1f5f9;
+            background: transparent;
         }
 
         ::-webkit-scrollbar-thumb {
-            background: #94a3b8;
-            border-radius: 4px;
+            background: rgba(161, 161, 170, 0.35);
+            border-radius: 9999px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: #64748b;
+            background: rgba(161, 161, 170, 0.6);
         }
 
-        #back-to-top {
-            display: none;
+        .reveal {
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
         }
     </style>
-</head>
-
-<body class="bg-zinc-50 dark:bg-slate-900 text-zinc-800 dark:text-slate-200 antialiased transition-colors duration-300">
 
     <script>
-        // Check for saved user preference, if any, on load of the website
         if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
         } else {
             document.documentElement.classList.remove('dark');
         }
     </script>
+</head>
 
+<body
+    class="bg-[#fafafa] dark:bg-[#09090b] text-zinc-900 dark:text-zinc-100 antialiased selection:bg-zinc-900 selection:text-white dark:selection:bg-zinc-100 dark:selection:text-zinc-900 transition-colors duration-300 relative min-h-screen">
+
+    <!-- Subtle ambient grid and top glow -->
+    <div
+        class="fixed inset-0 bg-grid-pattern pointer-events-none z-0 [mask-image:radial-gradient(ellipse_at_top,black_30%,transparent_80%)]">
+    </div>
+    <div
+        class="fixed top-0 left-1/2 -translate-x-1/2 w-[700px] h-[280px] bg-gradient-to-b from-zinc-200/40 dark:from-zinc-800/20 to-transparent blur-3xl pointer-events-none z-0">
+    </div>
+
+    <!-- Minimal Sticky Header -->
     <header
-        class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md sticky top-0 z-50 border-b border-zinc-200 dark:border-slate-800 transition-colors duration-300">
-        <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex-shrink-0">
-                    <a href="#" class="text-2xl font-bold text-zinc-900 dark:text-zinc-50">
-                        Abuzar's Portfolio
-                    </a>
-                </div>
-                <div class="hidden md:flex md:items-center md:space-x-8">
-                    <a href="#about"
-                        class="font-medium text-zinc-600 dark:text-zinc-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200">About</a>
-                    <a href="#skills"
-                        class="font-medium text-zinc-600 dark:text-zinc-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200">Skills</a>
-                    <a href="#projects"
-                        class="font-medium text-zinc-600 dark:text-zinc-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200">Projects</a>
-                    <a href="#contact"
-                        class="font-medium text-zinc-600 dark:text-zinc-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200">Contact</a>
-                </div>
-                <div class="flex items-center space-x-2 md:space-x-4">
-                    <button id="theme-toggle" type="button"
-                        class="text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:outline-none focus:ring-4 focus:ring-zinc-200 dark:focus:ring-zinc-700 rounded-lg text-sm p-2.5 transition-colors">
-                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-                        </svg>
-                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-                                fill-rule="evenodd" clip-rule="evenodd"></path>
-                        </svg>
-                    </button>
-                    <div class="md:hidden flex items-center">
-                        <button id="mobile-menu-btn"
-                            class="text-zinc-700 dark:text-zinc-300 hover:text-indigo-600 dark:hover:text-indigo-400 focus:outline-none transition-colors">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M4 6h16M4 12h16m-7 6h7"></path>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
+        class="sticky top-0 z-50 backdrop-blur-xl bg-[#fafafa]/80 dark:bg-[#09090b]/80 border-b border-zinc-200/70 dark:border-zinc-800/80 transition-colors duration-300">
+        <nav class="max-w-5xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between" aria-label="Main Navigation">
+            <a href="#"
+                class="text-base font-semibold tracking-tight text-zinc-900 dark:text-zinc-100 hover:opacity-80 transition-opacity">
+                Abuzar Gifary
+            </a>
+
+            <div class="hidden md:flex items-center gap-1">
+                <a href="#about"
+                    class="px-3.5 py-1.5 rounded-full text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-200/50 dark:hover:bg-zinc-800/50 transition-all">About</a>
+                <a href="#skills"
+                    class="px-3.5 py-1.5 rounded-full text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-200/50 dark:hover:bg-zinc-800/50 transition-all">Capabilities</a>
+                <a href="#projects"
+                    class="px-3.5 py-1.5 rounded-full text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-200/50 dark:hover:bg-zinc-800/50 transition-all">Work</a>
+                <a href="#contact"
+                    class="px-3.5 py-1.5 rounded-full text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-200/50 dark:hover:bg-zinc-800/50 transition-all">Contact</a>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <button id="theme-toggle" type="button" aria-label="Toggle color theme"
+                    class="p-2 rounded-full text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-200/60 dark:hover:bg-zinc-800/60 focus:outline-none transition-colors">
+                    <svg id="theme-toggle-dark-icon" class="hidden w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                    <svg id="theme-toggle-light-icon" class="hidden w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                            fill-rule="evenodd" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+
+                <a href="#contact"
+                    class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 hover:bg-zinc-700 dark:hover:bg-zinc-300 transition-colors">
+                    Let's Talk
+                </a>
+
+                <button id="mobile-menu-btn" type="button" aria-label="Open menu"
+                    class="md:hidden p-2 rounded-lg text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 focus:outline-none">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75"
+                            d="M4 7h16M4 12h16M4 17h16"></path>
+                    </svg>
+                </button>
             </div>
         </nav>
+
+        <!-- Mobile Menu Dropdown -->
         <div id="mobile-menu"
-            class="md:hidden hidden bg-white dark:bg-slate-900 border-b border-zinc-200 dark:border-slate-800 transition-colors duration-300">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            class="md:hidden hidden border-t border-zinc-200/70 dark:border-zinc-800/80 bg-[#fafafa]/95 dark:bg-[#09090b]/95 backdrop-blur-xl">
+            <div class="px-5 py-4 space-y-1">
                 <a href="#about"
-                    class="block px-3 py-2 rounded-md text-base font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-900 hover:text-indigo-600 dark:hover:text-indigo-400">About</a>
+                    class="block px-3 py-2 rounded-lg text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200/50 dark:hover:bg-zinc-800/50">About</a>
                 <a href="#skills"
-                    class="block px-3 py-2 rounded-md text-base font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-900 hover:text-indigo-600 dark:hover:text-indigo-400">Skills</a>
+                    class="block px-3 py-2 rounded-lg text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200/50 dark:hover:bg-zinc-800/50">Capabilities</a>
                 <a href="#projects"
-                    class="block px-3 py-2 rounded-md text-base font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-900 hover:text-indigo-600 dark:hover:text-indigo-400">Projects</a>
+                    class="block px-3 py-2 rounded-lg text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200/50 dark:hover:bg-zinc-800/50">Work</a>
                 <a href="#contact"
-                    class="block px-3 py-2 rounded-md text-base font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-900 hover:text-indigo-600 dark:hover:text-indigo-400">Contact</a>
+                    class="block px-3 py-2 rounded-lg text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200/50 dark:hover:bg-zinc-800/50">Contact</a>
             </div>
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <main class="relative z-10 max-w-5xl mx-auto px-5 sm:px-8">
 
-        <section id="hero" class="flex flex-col-reverse md:flex-row items-center justify-between py-24 md:py-32">
-            <div class="w-full md:w-1/2 text-center md:text-left mt-12 md:mt-0">
-                <span class="text-indigo-600 font-medium">Hello, I'm</span>
-                <h1
-                    class="text-5xl md:text-6xl font-extrabold text-slate-900 dark:text-slate-50 mt-2 mb-6 leading-tight">
-                    Abuzar Gifary
-                </h1>
-                <p class="text-xl text-slate-600 max-w-lg mx-auto md:mx-0">
-                    Full-Stack Web Developer
-                </p>
+        <!-- Hero Section -->
+        <section id="hero" class="pt-16 pb-20 md:pt-28 md:pb-28 border-b border-zinc-200/70 dark:border-zinc-800/80">
+            <div class="flex flex-col-reverse md:flex-row items-start md:items-center justify-between gap-12">
+                <div class="w-full md:w-3/5 space-y-6">
+                    <div
+                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-zinc-200 dark:border-zinc-800 bg-white/70 dark:bg-zinc-900/70 text-xs font-mono text-zinc-600 dark:text-zinc-400">
+                        <span class="relative flex h-2 w-2">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                        </span>
+                        <span>Available for web &amp; app projects</span>
+                    </div>
 
-                <div class="flex justify-center md:justify-start space-x-6 mt-6 mb-8">
-                    <!-- GitHub -->
-                    <a href="https://github.com/abzgif" target="_blank" rel="noopener noreferrer" title="GitHub"
-                        class="text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 dark:text-zinc-400 hover:scale-110 transform transition-all duration-300">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                            stroke-linejoin="round" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                            aria-label="GitHub">
-                            <path
-                                d="M15 22v-4a4.8 4.8 0 0 0-1-3.2c3-.3 6-1.5 6-6.5a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 5 3 6.2 6 6.5a4.8 4.8 0 0 0-1 3.2v4">
-                            </path>
-                        </svg>
-                    </a>
-                    <!-- Facebook -->
-                    <a href="https://facebook.com/abzgif" target="_blank" rel="noopener noreferrer" title="Facebook"
-                        class="text-zinc-500 hover:text-[#1877F2] dark:hover:text-[#1877F2] dark:text-zinc-400 hover:scale-110 transform transition-all duration-300">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                            stroke-linejoin="round" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                            aria-label="Facebook">
-                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                        </svg>
-                    </a>
-                    <!-- Instagram -->
-                    <a href="https://instagram.com/abzgif" target="_blank" rel="noopener noreferrer" title="Instagram"
-                        class="text-zinc-500 hover:text-[#E4405F] dark:hover:text-[#E4405F] dark:text-zinc-400 hover:scale-110 transform transition-all duration-300">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                            stroke-linejoin="round" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
-                            aria-label="Instagram">
-                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
-                        </svg>
-                    </a>
+                    <div class="space-y-3">
+                        <h1
+                            class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 leading-[1.1]">
+                            Abuzar Gifary
+                        </h1>
+                        <p class="text-lg sm:text-xl font-medium text-zinc-600 dark:text-zinc-400">
+                            Full-Stack Web Developer &amp; Founder of <a href="https://bytegif.com" target="_blank"
+                                rel="noopener noreferrer"
+                                class="text-zinc-900 dark:text-zinc-100 underline decoration-zinc-400 dark:decoration-zinc-600 underline-offset-4 hover:decoration-zinc-900 dark:hover:decoration-zinc-100 transition-colors">ByteGif</a>
+                        </p>
+                    </div>
+
+                    <p class="text-base text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-xl">
+                        With 9 years of experience in full-stack web development and native software engineering, I
+                        build fast, scalable websites, custom business web applications, and privacy-first Android and
+                        macOS utilities.
+                    </p>
+
+                    <div class="flex flex-wrap items-center gap-3 pt-2">
+                        <a href="#projects"
+                            class="inline-flex items-center gap-2 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 text-sm font-medium py-2.5 px-5 rounded-full hover:bg-zinc-700 dark:hover:bg-zinc-300 transition-all">
+                            <span>View Projects &amp; Apps</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="#contact"
+                            class="inline-flex items-center gap-2 border border-zinc-300 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 text-zinc-800 dark:text-zinc-200 text-sm font-medium py-2.5 px-5 rounded-full hover:border-zinc-400 dark:hover:border-zinc-700 transition-all">
+                            <span>Get in Touch</span>
+                        </a>
+                    </div>
+
+                    <!-- Social & Developer Profile Links -->
+                    <div class="flex flex-wrap items-center gap-x-4 gap-y-2 pt-4 text-zinc-500 dark:text-zinc-400">
+                        <a href="https://github.com/abzgif" target="_blank" rel="noopener noreferrer"
+                            aria-label="GitHub"
+                            class="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors flex items-center gap-1.5 text-xs font-mono">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75"
+                                stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                <path
+                                    d="M15 22v-4a4.8 4.8 0 0 0-1-3.2c3-.3 6-1.5 6-6.5a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 5 3 6.2 6 6.5a4.8 4.8 0 0 0-1 3.2v4">
+                                </path>
+                            </svg>
+                            <span>GitHub</span>
+                        </a>
+                        <span class="text-zinc-300 dark:text-zinc-800">/</span>
+                        <a href="https://play.google.com/store/apps/dev?id=5212652438690411522&hl=en" target="_blank"
+                            rel="noopener noreferrer" aria-label="Google Play Store"
+                            class="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors flex items-center gap-1.5 text-xs font-mono">
+                            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z" />
+                            </svg>
+                            <span>Google Play</span>
+                        </a>
+                        <span class="text-zinc-300 dark:text-zinc-800">/</span>
+                        <a href="https://bytegif.com" target="_blank" rel="noopener noreferrer" aria-label="ByteGif"
+                            class="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors flex items-center gap-1.5 text-xs font-mono">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75"
+                                stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path
+                                    d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                                </path>
+                            </svg>
+                            <span>ByteGif</span>
+                        </a>
+                        <span class="text-zinc-300 dark:text-zinc-800">/</span>
+                        <a href="https://facebook.com/abzgif" target="_blank" rel="noopener noreferrer"
+                            aria-label="Facebook"
+                            class="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors flex items-center gap-1.5 text-xs font-mono">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75"
+                                stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                            <span>Facebook</span>
+                        </a>
+                        <span class="text-zinc-300 dark:text-zinc-800">/</span>
+                        <a href="https://instagram.com/abzgif" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram"
+                            class="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors flex items-center gap-1.5 text-xs font-mono">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75"
+                                stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                            </svg>
+                            <span>Instagram</span>
+                        </a>
+                    </div>
                 </div>
 
-                <a href="#contact"
-                    class="inline-block bg-indigo-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-indigo-700 transition-all duration-300 transform hover:-translate-y-0.5">
-                    Get In Touch
-                </a>
-            </div>
-            <div class="w-full md:w-1/2 flex justify-center">
-                <img src="images/hero_image.webp" alt="A photo of Abuzar Gifary"
-                    class="rounded-full w-64 h-64 md:w-96 md:h-96 object-cover shadow-xl border-8 border-white"
-                    onerror="this.src='https://placehold.co/400x400/e0e7ff/6366f1?text=AG';this.onerror=null;">
-            </div>
-        </section>
-
-        <section id="about" class="py-24 transition-colors duration-300">
-            <h2 class="text-4xl font-bold text-center mb-6 text-zinc-900 dark:text-zinc-50">About Me</h2>
-            <div class="space-y-6 text-lg text-zinc-600 dark:text-zinc-400 max-w-3xl mx-auto text-left">
-                <p>
-                    Hello! I'm Abuzar, a full-stack developer with 8 years of experience specializing in PHP,
-                    JavaScript, and database management. My passion is building robust, efficient, and scalable web
-                    solutions that solve real-world business problems.
-                </p>
-                <p>
-                    Recently, I have also expanded into building native applications for Android, macOS, and Linux. I am the founder of <strong>ByteGif</strong>, my independent app production brand under which I design and develop high-performance tools and utility apps.
-                </p>
-                <p>
-                    From custom WordPress plugins and themes to complex CRM systems and internal business management
-                    panels, I handle all aspects of development. I thrive on turning a client's idea into a functional,
-                    user-friendly product, focusing on clean code and long-term maintainability.
-                </p>
-                <p>
-                    I also provide complete, end-to-end packages for my clients, including domain purchasing, hosting
-                    setup, and a very fast project turnaround to get your business online quickly.
-                </p>
+                <!-- Minimal Portrait Frame -->
+                <div class="w-full md:w-2/5 flex justify-start md:justify-end">
+                    <div class="relative group">
+                        <div
+                            class="absolute -inset-1 rounded-3xl bg-gradient-to-tr from-zinc-200 to-zinc-100 dark:from-zinc-800 dark:to-zinc-900 opacity-60 blur-md transition duration-500 group-hover:opacity-100">
+                        </div>
+                        <div
+                            class="relative w-44 h-44 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 shadow-sm">
+                            <img src="images/hero_image.webp" alt="Abuzar Gifary"
+                                class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
+                                onerror="this.src='https://placehold.co/400x400/18181b/fafafa?text=AG';this.onerror=null;">
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section id="skills"
-            class="py-24 bg-white dark:bg-zinc-900/50 rounded-2xl shadow-[0_4px_40px_-15px_rgba(0,0,0,0.05)] border border-transparent dark:border-zinc-800/50 transition-colors duration-300">
-            <div class="container mx-auto">
-                <h2 class="text-4xl font-bold text-center mb-16 text-zinc-900 dark:text-zinc-50">What I Do</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <!-- 01 / About Section (Short & Concise) -->
+        <section id="about" class="py-20 md:py-24 border-b border-zinc-200/70 dark:border-zinc-800/80 reveal">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+                <div class="md:col-span-4 space-y-2">
+                    <span class="font-mono text-xs uppercase tracking-widest text-zinc-400 dark:text-zinc-500">01 /
+                        Profile</span>
+                    <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">About
+                        Me</h2>
+                </div>
 
+                <div class="md:col-span-8 space-y-6">
+                    <div class="space-y-4 text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                        <p>
+                            I'm <strong class="font-medium text-zinc-900 dark:text-zinc-100">Abuzar Gifary</strong> (<a
+                                href="https://github.com/abzgif" target="_blank" rel="noopener noreferrer"
+                                class="font-mono text-sm text-zinc-900 dark:text-zinc-100 underline decoration-zinc-300 dark:decoration-zinc-700 underline-offset-4 hover:decoration-zinc-900 dark:hover:decoration-zinc-100">@abzgif</a>),
+                            a full-stack developer with <strong class="font-medium text-zinc-900 dark:text-zinc-100">9
+                                years of experience</strong> building fast, scalable websites, custom WordPress
+                            platforms, and business web applications using PHP, JavaScript, and modern databases.
+                        </p>
+                        <p>
+                            I'm also the founder of <a href="https://bytegif.com" target="_blank"
+                                rel="noopener noreferrer"
+                                class="font-medium text-zinc-900 dark:text-zinc-100 underline decoration-zinc-300 dark:decoration-zinc-700 underline-offset-4 hover:decoration-zinc-900 dark:hover:decoration-zinc-100 transition-colors">ByteGif</a>,
+                            where I design and ship privacy-first native apps for Android and macOS. From custom code to
+                            domain and hosting setup, I deliver complete products built for speed and reliability.
+                        </p>
+                    </div>
+
+                    <!-- Minimal Metrics Strip -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-2">
+                        <div
+                            class="p-4 rounded-xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/50 dark:bg-zinc-900/40">
+                            <p class="font-mono text-2xl font-semibold text-zinc-900 dark:text-zinc-100">9+ yrs</p>
+                            <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Web &amp; App Experience</p>
+                        </div>
+                        <div
+                            class="p-4 rounded-xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/50 dark:bg-zinc-900/40">
+                            <p class="font-mono text-2xl font-semibold text-zinc-900 dark:text-zinc-100">Web &amp;
+                                Native</p>
+                            <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Websites, Android &amp; macOS</p>
+                        </div>
+                        <div
+                            class="col-span-2 sm:col-span-1 p-4 rounded-xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/50 dark:bg-zinc-900/40">
+                            <p class="font-mono text-2xl font-semibold text-zinc-900 dark:text-zinc-100">End-to-End</p>
+                            <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Design, Code &amp; Hosting</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02 / Skills & Capabilities Section -->
+        <section id="skills" class="py-20 md:py-24 border-b border-zinc-200/70 dark:border-zinc-800/80 reveal">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+                <div class="md:col-span-4 space-y-2">
+                    <span class="font-mono text-xs uppercase tracking-widest text-zinc-400 dark:text-zinc-500">02 /
+                        Capabilities</span>
+                    <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">What I
+                        Do</h2>
+                    <p class="text-sm text-zinc-500 dark:text-zinc-400 pt-1">
+                        Full-stack web development and native application engineering.
+                    </p>
+                </div>
+
+                <div class="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <!-- Frontend & Websites -->
                     <div
-                        class="bg-zinc-50/50 dark:bg-zinc-900/50 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-zinc-200/50 dark:border-zinc-800">
-                        <div class="flex items-center space-x-4 mb-4">
+                        class="group p-6 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/60 dark:bg-zinc-900/40 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all flex flex-col justify-between">
+                        <div>
                             <div
-                                class="p-2.5 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 rounded-lg">
-                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                class="w-9 h-9 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 flex items-center justify-center text-zinc-700 dark:text-zinc-300 mb-5">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
                                 </svg>
                             </div>
-                            <h3 class="text-xl font-bold text-zinc-900 dark:text-zinc-50">Frontend Development</h3>
+                            <h3 class="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-2">Websites &amp;
+                                Frontend</h3>
+                            <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                                Building fast, responsive corporate websites, landing pages, e-commerce stores, and
+                                interactive web apps.
+                            </p>
                         </div>
-                        <p class="text-zinc-600 dark:text-zinc-400">
-                            Crafting responsive and interactive user interfaces using modern web standards.
-                        </p>
-                        <p
-                            class="mt-4 text-sm text-indigo-600 dark:text-indigo-400 font-semibold tracking-wide uppercase text-[11px]">
-                            HTML, CSS, JavaScript, React, Tailwind</p>
+                        <div class="flex flex-wrap gap-1.5 mt-6 pt-4 border-t border-zinc-100 dark:border-zinc-800/60">
+                            <span
+                                class="font-mono text-[11px] px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">HTML
+                                / CSS</span>
+                            <span
+                                class="font-mono text-[11px] px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">JavaScript</span>
+                            <span
+                                class="font-mono text-[11px] px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">React</span>
+                            <span
+                                class="font-mono text-[11px] px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">Tailwind</span>
+                            <span
+                                class="font-mono text-[11px] px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">WordPress</span>
+                        </div>
                     </div>
 
+                    <!-- Backend & APIs -->
                     <div
-                        class="bg-zinc-50/50 dark:bg-zinc-900/50 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-zinc-200/50 dark:border-zinc-800">
-                        <div class="flex items-center space-x-4 mb-4">
+                        class="group p-6 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/60 dark:bg-zinc-900/40 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all flex flex-col justify-between">
+                        <div>
                             <div
-                                class="p-2.5 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 rounded-lg">
-                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 12h14M12 5l7 7-7 7"></path>
+                                class="w-9 h-9 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 flex items-center justify-center text-zinc-700 dark:text-zinc-300 mb-5">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7">
+                                    </path>
                                 </svg>
                             </div>
-                            <h3 class="text-xl font-bold text-zinc-900 dark:text-zinc-50">Backend Development</h3>
+                            <h3 class="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-2">Backend &amp;
+                                Custom Portals</h3>
+                            <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                                Developing secure server-side architectures, custom CRM systems, admin dashboards, and
+                                REST APIs.
+                            </p>
                         </div>
-                        <p class="text-zinc-600 dark:text-zinc-400">
-                            Building secure server-side logic, APIs, and business automation.
-                        </p>
-                        <p
-                            class="mt-4 text-sm text-indigo-600 dark:text-indigo-400 font-semibold tracking-wide uppercase text-[11px]">
-                            PHP, Node.js, Laravel, Express, REST APIs</p>
+                        <div class="flex flex-wrap gap-1.5 mt-6 pt-4 border-t border-zinc-100 dark:border-zinc-800/60">
+                            <span
+                                class="font-mono text-[11px] px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">PHP</span>
+                            <span
+                                class="font-mono text-[11px] px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">Laravel</span>
+                            <span
+                                class="font-mono text-[11px] px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">Node.js</span>
+                            <span
+                                class="font-mono text-[11px] px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">Express</span>
+                            <span
+                                class="font-mono text-[11px] px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">REST
+                                APIs</span>
+                        </div>
                     </div>
 
+                    <!-- Native Android & macOS -->
                     <div
-                        class="bg-zinc-50/50 dark:bg-zinc-900/50 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-zinc-200/50 dark:border-zinc-800">
-                        <div class="flex items-center space-x-4 mb-4">
+                        class="group p-6 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/60 dark:bg-zinc-900/40 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all flex flex-col justify-between">
+                        <div>
                             <div
-                                class="p-2.5 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 rounded-lg">
-                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                class="w-9 h-9 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 flex items-center justify-center text-zinc-700 dark:text-zinc-300 mb-5">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75"
+                                    viewBox="0 0 24 24">
+                                    <rect width="14" height="20" x="5" y="2" rx="2" ry="2"></rect>
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-2">Android &amp;
+                                macOS Apps</h3>
+                            <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                                Designing and shipping privacy-first native utilities, media players, and system
+                                monitors under ByteGif.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5 mt-6 pt-4 border-t border-zinc-100 dark:border-zinc-800/60">
+                            <span
+                                class="font-mono text-[11px] px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">Kotlin</span>
+                            <span
+                                class="font-mono text-[11px] px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">Jetpack
+                                Compose</span>
+                            <span
+                                class="font-mono text-[11px] px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">Material
+                                3</span>
+                            <span
+                                class="font-mono text-[11px] px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">macOS</span>
+                        </div>
+                    </div>
+
+                    <!-- Databases & End-to-End Hosting -->
+                    <div
+                        class="group p-6 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/60 dark:bg-zinc-900/40 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all flex flex-col justify-between">
+                        <div>
+                            <div
+                                class="w-9 h-9 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900 flex items-center justify-center text-zinc-700 dark:text-zinc-300 mb-5">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4">
                                     </path>
                                 </svg>
                             </div>
-                            <h3 class="text-xl font-bold text-zinc-900 dark:text-zinc-50">Database Management</h3>
+                            <h3 class="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-2">Databases &amp;
+                                Deployment</h3>
+                            <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                                Designing optimized SQL/NoSQL schemas alongside complete domain setup, hosting
+                                configuration, and maintenance.
+                            </p>
                         </div>
-                        <p class="text-zinc-600 dark:text-zinc-400">
-                            Designing and optimizing efficient, secure, and reliable database structures.
-                        </p>
-                        <p
-                            class="mt-4 text-sm text-indigo-600 dark:text-indigo-400 font-semibold tracking-wide uppercase text-[11px]">
-                            SQL, MySQL, PostgreSQL, MongoDB</p>
-                    </div>
-
-                    <div
-                        class="bg-zinc-50/50 dark:bg-zinc-900/50 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-zinc-200/50 dark:border-zinc-800">
-                        <div class="flex items-center space-x-4 mb-4">
-                            <div
-                                class="p-2.5 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 rounded-lg">
-                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9">
-                                    </path>
-                                </svg>
-                            </div>
-                            <h3 class="text-xl font-bold text-zinc-900 dark:text-zinc-50">Full Web Solutions</h3>
+                        <div class="flex flex-wrap gap-1.5 mt-6 pt-4 border-t border-zinc-100 dark:border-zinc-800/60">
+                            <span
+                                class="font-mono text-[11px] px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">MySQL</span>
+                            <span
+                                class="font-mono text-[11px] px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">PostgreSQL</span>
+                            <span
+                                class="font-mono text-[11px] px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">MongoDB</span>
+                            <span
+                                class="font-mono text-[11px] px-2 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">Cloud
+                                Hosting</span>
                         </div>
-                        <p class="text-zinc-600 dark:text-zinc-400">
-                            Building complete websites from start to finish: e-commerce, portfolios, corporate sites.
-                        </p>
-                        <p
-                            class="mt-4 text-sm text-indigo-600 dark:text-indigo-400 font-semibold tracking-wide uppercase text-[11px]">
-                            WordPress, E-commerce, Corporate Sites</p>
                     </div>
-
                 </div>
             </div>
         </section>
 
-        <section id="projects" class="py-24 transition-colors duration-300">
-            <h2 class="text-4xl font-bold text-center mb-16 text-zinc-900 dark:text-zinc-50">Featured Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center">
-
-                <div
-                    class="bg-white dark:bg-slate-800/80 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-zinc-200 dark:border-slate-700 w-full max-w-sm flex flex-col group">
-                    <div
-                        class="w-full relative overflow-hidden rounded-t-2xl bg-slate-50 dark:bg-slate-900/50 flex justify-center items-start">
-                        <img src="images/carelifebangladesh.webp" alt="CareLife Bangladesh Website"
-                            class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
-                            onerror="this.src='https://placehold.co/600x400/e0e7ff/6366f1?text=CareLife';this.onerror=null;">
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-2xl font-bold mb-2 text-zinc-900 dark:text-zinc-50">
-                            Care Life Bangladesh
-                        </h3>
-                        <p class="text-zinc-600 dark:text-zinc-400 mb-6 flex-grow">
-                            A professional corporate website for Care Life Bangladesh company, built to be fast,
-                            responsive, and informative for their clients.
-                        </p>
-                        <div class="flex gap-4">
-                            <a href="http://carelifebangladesh.com" target="_blank" rel="noopener noreferrer"
-                                class="inline-flex items-center gap-2 bg-indigo-600 text-white text-sm font-medium py-2.5 px-5 rounded-xl hover:bg-indigo-700 transition-colors duration-200 shadow-sm">
-                                Visit Now
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
+        <!-- 03 / Selected Work Section (Apps + Horizontal Scrollable Websites) -->
+        <section id="projects" class="py-20 md:py-24 border-b border-zinc-200/70 dark:border-zinc-800/80 reveal">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
+                <div class="space-y-2">
+                    <span class="font-mono text-xs uppercase tracking-widest text-zinc-400 dark:text-zinc-500">03 /
+                        Selected Work</span>
+                    <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
+                        Featured Projects</h2>
+                    <p class="text-sm text-zinc-500 dark:text-zinc-400">
+                        Native applications built under <a href="https://bytegif.com" target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-zinc-900 dark:text-zinc-200 underline decoration-zinc-300 dark:decoration-zinc-700 underline-offset-4 hover:decoration-zinc-900 dark:hover:decoration-zinc-100">ByteGif</a>
+                        and full-stack web projects.
+                    </p>
                 </div>
-
-                <!-- Add your second project card here. -->
-                <div
-                    class="bg-white dark:bg-slate-800/80 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-zinc-200 dark:border-slate-700 w-full max-w-sm flex flex-col group">
-                    <div
-                        class="w-full relative overflow-hidden rounded-t-2xl bg-slate-50 dark:bg-slate-900/50 flex justify-center items-start">
-                        <img src="images/jbdc.webp" alt="JBDC Webapp"
-                            class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
-                            onerror="this.src='https://placehold.co/600x400/e0e7ff/6366f1?text=Project+2';this.onerror=null;">
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-2xl font-bold mb-2 text-zinc-900 dark:text-zinc-50">
-                            JBDC Webapp
-                        </h3>
-                        <p class="text-zinc-600 dark:text-zinc-400 mb-6 flex-grow">
-                            A complete web application for blood donation management with functional admin and doner
-                            panel. Super minimal design with realtime statistics.
-                        </p>
-                        <div class="flex gap-4">
-                            <a href="https://jbdc-app.web.app" target="_blank" rel="noopener noreferrer"
-                                class="inline-flex items-center gap-2 bg-indigo-600 text-white text-sm font-medium py-2.5 px-5 rounded-xl hover:bg-indigo-700 transition-colors duration-200 shadow-sm">
-                                Visit Now
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
+                <div class="flex items-center gap-4">
+                    <a href="https://play.google.com/store/apps/dev?id=5212652438690411522&hl=en" target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-1.5 font-mono text-xs text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors group">
+                        <span>Google Play</span>
+                        <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                            fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"></path>
+                        </svg>
+                    </a>
+                    <span class="text-zinc-300 dark:text-zinc-800">/</span>
+                    <a href="https://github.com/abzgif" target="_blank" rel="noopener noreferrer"
+                        class="inline-flex items-center gap-1.5 font-mono text-xs text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors group">
+                        <span>GitHub</span>
+                        <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                            fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"></path>
+                        </svg>
+                    </a>
                 </div>
+            </div>
 
-                <!-- Add your third project card here. -->
-                <div
-                    class="bg-white dark:bg-slate-800/80 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-zinc-200 dark:border-slate-700 w-full max-w-sm flex flex-col group">
-                    <div
-                        class="w-full relative overflow-hidden rounded-t-2xl bg-slate-50 dark:bg-slate-900/50 flex justify-center items-start">
-                        <img src="images/bytegif.webp" alt="ByteGif Website"
-                            class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-105"
-                            onerror="this.src='https://placehold.co/600x400/e0e7ff/6366f1?text=Project+2';this.onerror=null;">
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-2xl font-bold mb-2 text-zinc-900 dark:text-zinc-50">
-                            ByteGif App Production
-                        </h3>
-                        <p class="text-zinc-600 dark:text-zinc-400 mb-6 flex-grow">
-                            ByteGif builds thoughtful Android tools — designed with care, built for performance, and shipped to the Play Store.
-                        </p>
-                        <div class="flex gap-4">
-                            <a href="https://bytegif.github.io" target="_blank" rel="noopener noreferrer"
-                                class="inline-flex items-center gap-2 bg-indigo-600 text-white text-sm font-medium py-2.5 px-5 rounded-xl hover:bg-indigo-700 transition-colors duration-200 shadow-sm">
-                                Visit Now
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                </svg>
-                            </a>
+            <!-- Native Apps Subheading -->
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="font-mono text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Native Apps
+                    (Android &amp; macOS)</h3>
+            </div>
+
+            <!-- Compact 4-Column App Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-14">
+
+                <!-- 1. OpenCast -->
+                <a href="https://play.google.com/store/apps/details?id=com.bytegif.opencast" target="_blank"
+                    rel="noopener noreferrer"
+                    class="group p-4 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/40 hover:border-zinc-300 dark:hover:border-zinc-700 hover:bg-white dark:hover:bg-zinc-900/80 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-start justify-between gap-3 mb-3.5">
+                            <img src="images/applications/opencast.webp" alt="OpenCast Icon"
+                                class="w-11 h-11 rounded-xl object-cover border border-zinc-200/60 dark:border-zinc-800/60 shrink-0 shadow-sm">
+                            <span
+                                class="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full border border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400">Android</span>
                         </div>
+                        <h4
+                            class="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-1 group-hover:underline underline-offset-4">
+                            OpenCast
+                        </h4>
+                        <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed line-clamp-3">
+                            Discover podcasts, stream live global radio stations, and sync favorite shows with offline
+                            listening.
+                        </p>
                     </div>
-                </div>
+                    <div
+                        class="mt-4 pt-3 border-t border-zinc-100 dark:border-zinc-800/60 flex items-center justify-between text-[11px] font-mono text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors">
+                        <span>Play Store</span>
+                        <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                            fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"></path>
+                        </svg>
+                    </div>
+                </a>
+
+                <!-- 2. GlassBeat -->
+                <a href="https://play.google.com/store/apps/details?id=com.bytegif.glassbeat" target="_blank"
+                    rel="noopener noreferrer"
+                    class="group p-4 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/40 hover:border-zinc-300 dark:hover:border-zinc-700 hover:bg-white dark:hover:bg-zinc-900/80 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-start justify-between gap-3 mb-3.5">
+                            <img src="images/applications/glassbeat.webp" alt="GlassBeat Icon"
+                                class="w-11 h-11 rounded-xl object-cover border border-zinc-200/60 dark:border-zinc-800/60 shrink-0 shadow-sm">
+                            <span
+                                class="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full border border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400">Android</span>
+                        </div>
+                        <h4
+                            class="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-1 group-hover:underline underline-offset-4">
+                            GlassBeat
+                        </h4>
+                        <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed line-clamp-3">
+                            Offline local music player featuring a built-in audio tag editor, smart sleep timer, and
+                            Media3 playback.
+                        </p>
+                    </div>
+                    <div
+                        class="mt-4 pt-3 border-t border-zinc-100 dark:border-zinc-800/60 flex items-center justify-between text-[11px] font-mono text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors">
+                        <span>Play Store</span>
+                        <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                            fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"></path>
+                        </svg>
+                    </div>
+                </a>
+
+                <!-- 3. Audio Tag Editor -->
+                <a href="https://play.google.com/store/apps/details?id=com.bytegif.audiotageditor" target="_blank"
+                    rel="noopener noreferrer"
+                    class="group p-4 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/40 hover:border-zinc-300 dark:hover:border-zinc-700 hover:bg-white dark:hover:bg-zinc-900/80 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-start justify-between gap-3 mb-3.5">
+                            <img src="images/applications/audio-tag-editor.webp" alt="Audio Tag Editor Icon"
+                                class="w-11 h-11 rounded-xl object-cover border border-zinc-200/60 dark:border-zinc-800/60 shrink-0 shadow-sm">
+                            <span
+                                class="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full border border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400">Android</span>
+                        </div>
+                        <h4
+                            class="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-1 group-hover:underline underline-offset-4">
+                            Audio Tag Editor
+                        </h4>
+                        <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed line-clamp-3">
+                            Edit song metadata, lyrics, and custom album art 100% offline with fast multi-track batch
+                            editing.
+                        </p>
+                    </div>
+                    <div
+                        class="mt-4 pt-3 border-t border-zinc-100 dark:border-zinc-800/60 flex items-center justify-between text-[11px] font-mono text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors">
+                        <span>Play Store</span>
+                        <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                            fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"></path>
+                        </svg>
+                    </div>
+                </a>
+
+                <!-- 4. Image Resizer -->
+                <a href="https://play.google.com/store/apps/details?id=com.bytegif.imageresizer" target="_blank"
+                    rel="noopener noreferrer"
+                    class="group p-4 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/40 hover:border-zinc-300 dark:hover:border-zinc-700 hover:bg-white dark:hover:bg-zinc-900/80 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-start justify-between gap-3 mb-3.5">
+                            <img src="images/applications/image-resizer.webp" alt="Image Resizer Icon"
+                                class="w-11 h-11 rounded-xl object-cover border border-zinc-200/60 dark:border-zinc-800/60 shrink-0 shadow-sm">
+                            <span
+                                class="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full border border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400">Android</span>
+                        </div>
+                        <h4
+                            class="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-1 group-hover:underline underline-offset-4">
+                            Image Resizer
+                        </h4>
+                        <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed line-clamp-3">
+                            Resize, crop, compress, and convert photos between JPG, PNG, and WEBP locally on your
+                            device.
+                        </p>
+                    </div>
+                    <div
+                        class="mt-4 pt-3 border-t border-zinc-100 dark:border-zinc-800/60 flex items-center justify-between text-[11px] font-mono text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors">
+                        <span>Play Store</span>
+                        <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                            fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"></path>
+                        </svg>
+                    </div>
+                </a>
+
+                <!-- 5. Real Mirror -->
+                <a href="https://github.com/abzgif/android-real-mirror" target="_blank" rel="noopener noreferrer"
+                    class="group p-4 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/40 hover:border-zinc-300 dark:hover:border-zinc-700 hover:bg-white dark:hover:bg-zinc-900/80 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-start justify-between gap-3 mb-3.5">
+                            <img src="images/applications/real-mirror.webp" alt="Real Mirror Icon"
+                                class="w-11 h-11 rounded-xl object-cover border border-zinc-200/60 dark:border-zinc-800/60 shrink-0 shadow-sm">
+                            <span
+                                class="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full border border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400">Android</span>
+                        </div>
+                        <h4
+                            class="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-1 group-hover:underline underline-offset-4">
+                            Real Mirror
+                        </h4>
+                        <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed line-clamp-3">
+                            Open-source, privacy-first camera app showing your true, non-reversed reflection with photo
+                            and video capture.
+                        </p>
+                    </div>
+                    <div
+                        class="mt-4 pt-3 border-t border-zinc-100 dark:border-zinc-800/60 flex items-center justify-between text-[11px] font-mono text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors">
+                        <span>GitHub</span>
+                        <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                            fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"></path>
+                        </svg>
+                    </div>
+                </a>
+
+                <!-- 6. SendChat -->
+                <a href="https://github.com/abzgif/SendChat" target="_blank" rel="noopener noreferrer"
+                    class="group p-4 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/40 hover:border-zinc-300 dark:hover:border-zinc-700 hover:bg-white dark:hover:bg-zinc-900/80 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-start justify-between gap-3 mb-3.5">
+                            <img src="images/applications/sendchat.webp" alt="SendChat Icon"
+                                class="w-11 h-11 rounded-xl object-cover border border-zinc-200/60 dark:border-zinc-800/60 shrink-0 shadow-sm">
+                            <span
+                                class="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full border border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400">Local
+                                Wi-Fi</span>
+                        </div>
+                        <h4
+                            class="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-1 group-hover:underline underline-offset-4">
+                            SendChat
+                        </h4>
+                        <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed line-clamp-3">
+                            Chat and share files directly between your devices over local Wi-Fi with zero cloud servers.
+                        </p>
+                    </div>
+                    <div
+                        class="mt-4 pt-3 border-t border-zinc-100 dark:border-zinc-800/60 flex items-center justify-between text-[11px] font-mono text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors">
+                        <span>GitHub</span>
+                        <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                            fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"></path>
+                        </svg>
+                    </div>
+                </a>
+
+                <!-- 7. CleanMac -->
+                <a href="https://github.com/abzgif/mac-cleaner" target="_blank" rel="noopener noreferrer"
+                    class="group p-4 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/40 hover:border-zinc-300 dark:hover:border-zinc-700 hover:bg-white dark:hover:bg-zinc-900/80 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-start justify-between gap-3 mb-3.5">
+                            <img src="images/applications/cleanmac.webp" alt="CleanMac Icon"
+                                class="w-11 h-11 rounded-xl object-cover border border-zinc-200/60 dark:border-zinc-800/60 shrink-0 shadow-sm">
+                            <span
+                                class="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full border border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400">macOS</span>
+                        </div>
+                        <h4
+                            class="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-1 group-hover:underline underline-offset-4">
+                            CleanMac
+                        </h4>
+                        <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed line-clamp-3">
+                            Native macOS system cleaner for reclaiming storage, removing app leftovers, duplicate files,
+                            and dev caches.
+                        </p>
+                    </div>
+                    <div
+                        class="mt-4 pt-3 border-t border-zinc-100 dark:border-zinc-800/60 flex items-center justify-between text-[11px] font-mono text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors">
+                        <span>GitHub</span>
+                        <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                            fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"></path>
+                        </svg>
+                    </div>
+                </a>
+
+                <!-- 8. Mac Network Monitor -->
+                <a href="https://github.com/abzgif/mac-network-monitor" target="_blank" rel="noopener noreferrer"
+                    class="group p-4 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/40 hover:border-zinc-300 dark:hover:border-zinc-700 hover:bg-white dark:hover:bg-zinc-900/80 transition-all flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-start justify-between gap-3 mb-3.5">
+                            <img src="images/applications/mac-network-monitor.webp" alt="Mac Network Monitor Icon"
+                                class="w-11 h-11 rounded-xl object-cover border border-zinc-200/60 dark:border-zinc-800/60 shrink-0 shadow-sm">
+                            <span
+                                class="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full border border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400">macOS</span>
+                        </div>
+                        <h4
+                            class="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mb-1 group-hover:underline underline-offset-4">
+                            Mac Network Monitor
+                        </h4>
+                        <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed line-clamp-3">
+                            Lightweight native macOS menu bar utility displaying real-time upload and download speeds in
+                            a glassmorphic UI.
+                        </p>
+                    </div>
+                    <div
+                        class="mt-4 pt-3 border-t border-zinc-100 dark:border-zinc-800/60 flex items-center justify-between text-[11px] font-mono text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors">
+                        <span>GitHub</span>
+                        <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                            fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17"></path>
+                        </svg>
+                    </div>
+                </a>
 
             </div>
 
-            <!-- See more projects button -->
-            <div class="flex justify-center mt-16">
-                <a href="https://github.com/abzgif" target="_blank" rel="noopener noreferrer"
-                    class="inline-flex items-center gap-3 bg-zinc-900 hover:bg-zinc-800 dark:bg-slate-800 dark:hover:bg-slate-700 text-white font-semibold py-3.5 px-8 rounded-xl shadow-lg transition-all duration-300 hover:-translate-y-0.5 group">
-                    <svg class="w-5 h-5 fill-current transition-transform duration-300 group-hover:scale-110" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.137 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
-                    </svg>
-                    <span>See more projects on GitHub</span>
+            <!-- Web Projects Subheading + Horizontal Scroll Controls -->
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="font-mono text-xs uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Websites &amp;
+                    Web Applications</h3>
+                <div class="flex items-center gap-1.5">
+                    <button type="button" id="web-scroll-left" aria-label="Scroll websites left"
+                        class="p-1.5 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white/70 dark:bg-zinc-900/60 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                    </button>
+                    <button type="button" id="web-scroll-right" aria-label="Scroll websites right"
+                        class="p-1.5 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white/70 dark:bg-zinc-900/60 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Horizontal Scrollable Websites Row -->
+            <div id="websites-carousel" class="flex overflow-x-auto gap-5 pb-4 snap-x snap-mandatory scroll-smooth">
+                <!-- 1. ByteGif Website -->
+                <a href="https://bytegif.com" target="_blank" rel="noopener noreferrer"
+                    class="w-[82vw] sm:w-[340px] md:w-[360px] shrink-0 snap-start group rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/40 hover:border-zinc-300 dark:hover:border-zinc-700 hover:bg-white dark:hover:bg-zinc-900/80 overflow-hidden transition-all flex flex-col">
+                    <div
+                        class="aspect-[16/9] w-full overflow-hidden bg-zinc-100 dark:bg-zinc-900 border-b border-zinc-200/60 dark:border-zinc-800/60">
+                        <img src="images/websites/bytegif.webp" alt="ByteGif Official Website"
+                            class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]">
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow justify-between">
+                        <div>
+                            <div class="flex items-center justify-between gap-2 mb-1.5">
+                                <h4
+                                    class="text-base font-semibold text-zinc-900 dark:text-zinc-100 group-hover:underline underline-offset-4">
+                                    ByteGif
+                                </h4>
+                                <span
+                                    class="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full border border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400">Brand
+                                    Site</span>
+                            </div>
+                            <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                                Official product showcase and documentation hub for ByteGif's privacy-first Android and
+                                macOS applications.
+                            </p>
+                        </div>
+                        <div
+                            class="mt-4 pt-3 border-t border-zinc-100 dark:border-zinc-800/60 flex items-center justify-between text-[11px] font-mono text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors">
+                            <span>bytegif.com</span>
+                            <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                                fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 2. Care Life Bangladesh -->
+                <a href="https://carelife-bangladesh.web.app" target="_blank" rel="noopener noreferrer"
+                    class="w-[82vw] sm:w-[340px] md:w-[360px] shrink-0 snap-start group rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/40 hover:border-zinc-300 dark:hover:border-zinc-700 hover:bg-white dark:hover:bg-zinc-900/80 overflow-hidden transition-all flex flex-col">
+                    <div
+                        class="aspect-[16/9] w-full overflow-hidden bg-zinc-100 dark:bg-zinc-900 border-b border-zinc-200/60 dark:border-zinc-800/60">
+                        <img src="images/websites/carelifebangladesh.webp" alt="Care Life Bangladesh Website"
+                            class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]">
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow justify-between">
+                        <div>
+                            <div class="flex items-center justify-between gap-2 mb-1.5">
+                                <h4
+                                    class="text-base font-semibold text-zinc-900 dark:text-zinc-100 group-hover:underline underline-offset-4">
+                                    Care Life Bangladesh
+                                </h4>
+                                <span
+                                    class="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full border border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400">Website</span>
+                            </div>
+                            <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                                A responsive corporate web platform built for Care Life Bangladesh to present company
+                                services and client resources.
+                            </p>
+                        </div>
+                        <div
+                            class="mt-4 pt-3 border-t border-zinc-100 dark:border-zinc-800/60 flex items-center justify-between text-[11px] font-mono text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors">
+                            <span>carelife-bangladesh.web.app</span>
+                            <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                                fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- 3. JBDC Webapp -->
+                <a href="https://jbdc-app.web.app" target="_blank" rel="noopener noreferrer"
+                    class="w-[82vw] sm:w-[340px] md:w-[360px] shrink-0 snap-start group rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/40 hover:border-zinc-300 dark:hover:border-zinc-700 hover:bg-white dark:hover:bg-zinc-900/80 overflow-hidden transition-all flex flex-col">
+                    <div
+                        class="aspect-[16/9] w-full overflow-hidden bg-zinc-100 dark:bg-zinc-900 border-b border-zinc-200/60 dark:border-zinc-800/60">
+                        <img src="images/websites/jbdc.webp" alt="JBDC Webapp"
+                            class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]">
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow justify-between">
+                        <div>
+                            <div class="flex items-center justify-between gap-2 mb-1.5">
+                                <h4
+                                    class="text-base font-semibold text-zinc-900 dark:text-zinc-100 group-hover:underline underline-offset-4">
+                                    JBDC Webapp
+                                </h4>
+                                <span
+                                    class="font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full border border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400">Web
+                                    App</span>
+                            </div>
+                            <p class="text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                                A minimal blood donation management web application featuring dedicated admin and donor
+                                portals with real-time statistics.
+                            </p>
+                        </div>
+                        <div
+                            class="mt-4 pt-3 border-t border-zinc-100 dark:border-zinc-800/60 flex items-center justify-between text-[11px] font-mono text-zinc-500 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors">
+                            <span>jbdc-app.web.app</span>
+                            <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                                fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
                 </a>
             </div>
         </section>
 
-        <section id="contact" class="py-24 transition-colors duration-300">
-            <h2 class="text-4xl font-bold text-center mb-6 text-zinc-900 dark:text-zinc-50">Contact Me</h2>
-            <p class="text-lg text-zinc-600 dark:text-zinc-400 text-center max-w-xl mx-auto mb-12">
-                Want to connect? My inbox is always open!
-            </p>
+        <!-- 04 / Contact Section -->
+        <section id="contact" class="py-20 md:py-24 reveal">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+                <div class="md:col-span-5 space-y-8">
+                    <div class="space-y-2">
+                        <span class="font-mono text-xs uppercase tracking-widest text-zinc-400 dark:text-zinc-500">04 /
+                            Contact</span>
+                        <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
+                            Get in Touch</h2>
+                        <p class="text-sm text-zinc-600 dark:text-zinc-400 pt-1 leading-relaxed">
+                            Need a custom website, business web application, or native app? My inbox is always open.
+                        </p>
+                    </div>
 
-            <div class="flex flex-col md:flex-row items-center md:items-start justify-center gap-16 max-w-4xl mx-auto">
-                <div class="w-full md:w-1/3 space-y-8 text-left">
-                    <div class="flex items-center justify-start space-x-4">
-                        <div
-                            class="h-10 w-10 shrink-0 flex items-center justify-center rounded-lg bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                            </svg>
+                    <div class="space-y-5">
+                        <!-- Email -->
+                        <div class="flex items-start gap-3.5">
+                            <div
+                                class="w-9 h-9 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 flex items-center justify-center text-zinc-600 dark:text-zinc-400 shrink-0">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75"
+                                    viewBox="0 0 24 24">
+                                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-xs font-mono uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
+                                    Email</p>
+                                <a href="mailto:abuzar@duck.com"
+                                    class="text-sm font-medium text-zinc-900 dark:text-zinc-100 hover:underline underline-offset-4">abuzar@duck.com</a>
+                            </div>
                         </div>
-                        <div>
-                            <p class="font-semibold text-zinc-900 dark:text-zinc-50">Email</p>
-                            <a href="mailto:abuzar@duck.com"
-                                class="text-zinc-600 dark:text-zinc-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">abuzar@duck.com</a>
+
+                        <!-- Messenger -->
+                        <div class="flex items-start gap-3.5">
+                            <div
+                                class="w-9 h-9 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 flex items-center justify-center text-zinc-600 dark:text-zinc-400 shrink-0">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75"
+                                    viewBox="0 0 24 24">
+                                    <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-xs font-mono uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
+                                    Messenger</p>
+                                <a href="https://m.me/abzgif" target="_blank" rel="noopener noreferrer"
+                                    class="text-sm font-medium text-zinc-900 dark:text-zinc-100 hover:underline underline-offset-4">m.me/abzgif</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="flex items-center justify-start space-x-4">
-                        <div
-                            class="h-10 w-10 shrink-0 flex items-center justify-center rounded-lg bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
-                            </svg>
+
+                        <!-- Telegram -->
+                        <div class="flex items-start gap-3.5">
+                            <div
+                                class="w-9 h-9 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 flex items-center justify-center text-zinc-600 dark:text-zinc-400 shrink-0">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75"
+                                    viewBox="0 0 24 24">
+                                    <path d="m22 2-7 20-4-9-9-4Z"></path>
+                                    <path d="M22 2 11 13"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-xs font-mono uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
+                                    Telegram</p>
+                                <a href="https://t.me/abzgif" target="_blank" rel="noopener noreferrer"
+                                    class="text-sm font-medium text-zinc-900 dark:text-zinc-100 hover:underline underline-offset-4">@abzgif</a>
+                            </div>
                         </div>
-                        <div>
-                            <p class="font-semibold text-zinc-900 dark:text-zinc-50">Messenger</p>
-                            <a href="https://m.me/abzgif" target="_blank" rel="noopener noreferrer"
-                                class="text-zinc-600 dark:text-zinc-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">abzgif</a>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-start space-x-4">
-                        <div
-                            class="h-10 w-10 shrink-0 flex items-center justify-center rounded-lg bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="m22 2-7 20-4-9-9-4Z"></path>
-                                <path d="M22 2 11 13"></path>
-                            </svg>
-                        </div>
-                        <div>
-                            <p class="font-semibold text-zinc-900 dark:text-zinc-50">Telegram</p>
-                            <a href="https://t.me/abzgif" target="_blank" rel="noopener noreferrer"
-                                class="text-zinc-600 dark:text-zinc-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">@abzgif</a>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-start space-x-4">
-                        <div
-                            class="h-10 w-10 shrink-0 flex items-center justify-center rounded-lg bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5"
-                                stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
-                                <circle cx="12" cy="10" r="3"></circle>
-                            </svg>
-                        </div>
-                        <div>
-                            <p class="font-semibold text-zinc-900 dark:text-zinc-50">Location</p>
-                            <p class="text-zinc-600 dark:text-zinc-400">Kushtia, Bangladesh</p>
+
+                        <!-- Location -->
+                        <div class="flex items-start gap-3.5">
+                            <div
+                                class="w-9 h-9 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 flex items-center justify-center text-zinc-600 dark:text-zinc-400 shrink-0">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75"
+                                    viewBox="0 0 24 24">
+                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-xs font-mono uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
+                                    Location</p>
+                                <p class="text-sm font-medium text-zinc-900 dark:text-zinc-100">Kushtia, Bangladesh</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div
-                    class="w-full md:w-2/3 bg-white dark:bg-slate-900/50 p-8 rounded-2xl shadow-sm border border-zinc-200/50 dark:border-slate-800 transition-colors duration-300">
-                    <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
+                <!-- Minimal Contact Form -->
+                <div class="md:col-span-7">
+                    <form id="contact-form" action="https://api.web3forms.com/submit" method="POST"
+                        class="p-6 sm:p-8 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/70 dark:bg-zinc-900/40 space-y-5">
                         <input type="hidden" name="access_key" value="909861f0-e746-4e4e-81aa-3de913bd1b99">
                         <input type="hidden" name="subject" value="New Contact Form Submission from Portfolio">
                         <input type="hidden" name="from_name" value="Portfolio Site">
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                             <div>
-                                <label for="name" class="sr-only">Name</label>
-                                <input type="text" name="name" id="name" autocomplete="name" placeholder="Name" required
-                                    class="block w-full rounded-xl border-0 bg-zinc-50 dark:bg-slate-950/50 px-4 py-3 text-zinc-900 dark:text-zinc-100 shadow-sm ring-1 ring-inset ring-zinc-200 dark:ring-slate-800 placeholder:text-zinc-500 dark:placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6 transition-colors">
-                            </div>
-                            <div>
-                                <label for="email" class="sr-only">Email</label>
-                                <input type="email" name="email" id="email" autocomplete="email" placeholder="Email"
+                                <label for="name"
+                                    class="block text-xs font-mono uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-2">Name</label>
+                                <input type="text" name="name" id="name" autocomplete="name" placeholder="Your name"
                                     required
-                                    class="block w-full rounded-xl border-0 bg-zinc-50 dark:bg-slate-950/50 px-4 py-3 text-zinc-900 dark:text-zinc-100 shadow-sm ring-1 ring-inset ring-zinc-200 dark:ring-slate-800 placeholder:text-zinc-500 dark:placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6 transition-colors">
+                                    class="block w-full rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/70 dark:bg-zinc-950/60 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 dark:placeholder:text-zinc-600 focus:outline-none focus:border-zinc-900 dark:focus:border-zinc-300 transition-colors">
+                            </div>
+                            <div>
+                                <label for="email"
+                                    class="block text-xs font-mono uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-2">Email</label>
+                                <input type="email" name="email" id="email" autocomplete="email"
+                                    placeholder="you@example.com" required
+                                    class="block w-full rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/70 dark:bg-zinc-950/60 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 dark:placeholder:text-zinc-600 focus:outline-none focus:border-zinc-900 dark:focus:border-zinc-300 transition-colors">
                             </div>
                         </div>
+
                         <div>
-                            <label for="form-subject" class="sr-only">Subject</label>
-                            <input type="text" name="form-subject" id="form-subject" placeholder="Subject"
-                                class="block w-full rounded-xl border-0 bg-zinc-50 dark:bg-slate-950/50 px-4 py-3 text-zinc-900 dark:text-zinc-100 shadow-sm ring-1 ring-inset ring-zinc-200 dark:ring-slate-800 placeholder:text-zinc-500 dark:placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6 transition-colors">
+                            <label for="form-subject"
+                                class="block text-xs font-mono uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-2">Subject</label>
+                            <input type="text" name="form-subject" id="form-subject" placeholder="Project inquiry"
+                                class="block w-full rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/70 dark:bg-zinc-950/60 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 dark:placeholder:text-zinc-600 focus:outline-none focus:border-zinc-900 dark:focus:border-zinc-300 transition-colors">
                         </div>
+
                         <div>
-                            <label for="message" class="sr-only">Message</label>
-                            <textarea id="message" name="message" rows="6" placeholder="Message" required
-                                class="block w-full rounded-xl border-0 bg-zinc-50 dark:bg-slate-950/50 px-4 py-3 text-zinc-900 dark:text-zinc-100 shadow-sm ring-1 ring-inset ring-zinc-200 dark:ring-slate-800 placeholder:text-zinc-500 dark:placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6 transition-colors"></textarea>
+                            <label for="message"
+                                class="block text-xs font-mono uppercase tracking-wider text-zinc-500 dark:text-zinc-400 mb-2">Message</label>
+                            <textarea id="message" name="message" rows="5"
+                                placeholder="Tell me about your project or timeline..." required
+                                class="block w-full rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/70 dark:bg-zinc-950/60 px-3.5 py-2.5 text-sm text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 dark:placeholder:text-zinc-600 focus:outline-none focus:border-zinc-900 dark:focus:border-zinc-300 transition-colors resize-y"></textarea>
                         </div>
-                        <div id="form-result" class="mt-4 text-sm font-medium"></div>
-                        <button type="submit"
-                            class="inline-flex items-center gap-2 bg-indigo-600 text-white font-bold py-3 pt-[0.85rem] px-6 rounded-xl hover:bg-indigo-700 transition-all duration-300 transform hover:-translate-y-0.5 shadow-sm">
-                            Send Message
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-1" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                            </svg>
-                        </button>
+
+                        <div class="flex items-center justify-between gap-4 pt-1">
+                            <div id="form-result" class="text-xs font-mono"></div>
+                            <button type="submit"
+                                class="inline-flex items-center gap-2 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 text-sm font-medium py-2.5 px-6 rounded-full hover:bg-zinc-700 dark:hover:bg-zinc-300 transition-all shrink-0">
+                                <span>Send Message</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -534,23 +1057,35 @@
 
     </main>
 
-    <button id="back-to-top"
-        class="fixed bottom-8 right-8 bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-colors duration-200 z-50">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+    <!-- Back to Top Button -->
+    <button id="back-to-top" aria-label="Back to top"
+        class="hidden fixed bottom-6 right-6 z-50 p-2.5 rounded-full border border-zinc-200 dark:border-zinc-800 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-md text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white shadow-sm transition-all">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
         </svg>
     </button>
 
-    <footer
-        class="bg-white dark:bg-slate-900 border-t border-zinc-200 dark:border-slate-800 mt-24 transition-colors duration-300">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <p class="text-center text-zinc-500 dark:text-zinc-400">
-                &copy; <span id="current-year"></span> Abuzar Gifary. All rights reserved.
-            </p>
+    <!-- Minimal Footer -->
+    <footer class="relative z-10 border-t border-zinc-200/70 dark:border-zinc-800/80 mt-12">
+        <div
+            class="max-w-5xl mx-auto px-5 sm:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 dark:text-zinc-400">
+            <p>&copy; <span id="current-year"></span> Abuzar Gifary. All rights reserved.</p>
+            <div class="flex flex-wrap items-center gap-5 font-mono">
+                <a href="https://bytegif.com" target="_blank" rel="noopener noreferrer"
+                    class="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">ByteGif</a>
+                <a href="https://play.google.com/store/apps/dev?id=5212652438690411522&hl=en" target="_blank"
+                    rel="noopener noreferrer"
+                    class="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Google Play</a>
+                <a href="https://github.com/abzgif" target="_blank" rel="noopener noreferrer"
+                    class="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">GitHub</a>
+                <a href="mailto:abuzar@duck.com"
+                    class="hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">Email</a>
+            </div>
         </div>
     </footer>
 
     <script>
+        // Mobile menu toggle
         const menuBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
 
@@ -558,38 +1093,65 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
+        mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
             });
         });
 
+        // Dynamic year
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
-        const backToTopButton = document.getElementById('back-to-top');
+        // Horizontal scroll buttons for Websites section
+        const websitesCarousel = document.getElementById('websites-carousel');
+        const scrollLeftBtn = document.getElementById('web-scroll-left');
+        const scrollRightBtn = document.getElementById('web-scroll-right');
 
+        if (websitesCarousel && scrollLeftBtn && scrollRightBtn) {
+            scrollLeftBtn.addEventListener('click', () => {
+                websitesCarousel.scrollBy({ left: -380, behavior: 'smooth' });
+            });
+            scrollRightBtn.addEventListener('click', () => {
+                websitesCarousel.scrollBy({ left: 380, behavior: 'smooth' });
+            });
+        }
+
+        // Back to top visibility
+        const backToTopButton = document.getElementById('back-to-top');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTopButton.style.display = 'flex';
+            if (window.scrollY > 320) {
+                backToTopButton.classList.remove('hidden');
+                backToTopButton.classList.add('flex');
             } else {
-                backToTopButton.style.display = 'none';
+                backToTopButton.classList.add('hidden');
+                backToTopButton.classList.remove('flex');
             }
         });
 
         backToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
+        // Subtle reveal on scroll
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Contact form submission
         const form = document.getElementById('contact-form');
         const formResult = document.getElementById('form-result');
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            formResult.innerHTML = '<p class="text-slate-600">Sending...</p>';
+            formResult.innerHTML = '<span class="text-zinc-500 dark:text-zinc-400">Sending...</span>';
 
             const formData = new FormData(form);
 
@@ -597,21 +1159,19 @@
                 const response = await fetch(form.action, {
                     method: 'POST',
                     body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
+                    headers: { 'Accept': 'application/json' }
                 });
 
                 const data = await response.json();
 
                 if (data.success) {
-                    formResult.innerHTML = '<p class="text-green-600">Message sent successfully!</p>';
+                    formResult.innerHTML = '<span class="text-emerald-600 dark:text-emerald-400">Message sent!</span>';
                     form.reset();
                 } else {
-                    formResult.innerHTML = `<p class="text-red-600">Oops! Something went wrong. ${data.message || ''}</p>`;
+                    formResult.innerHTML = `<span class="text-red-600 dark:text-red-400">${data.message || 'Error sending message.'}</span>`;
                 }
             } catch (error) {
-                formResult.innerHTML = `<p class="text-red-600">Oops! Something went wrong. Please try again later.</p>`;
+                formResult.innerHTML = '<span class="text-red-600 dark:text-red-400">Network error. Please try again.</span>';
             }
 
             setTimeout(() => {
@@ -619,42 +1179,27 @@
             }, 5000);
         });
 
-        // Theme Toggle Logic
+        // Theme toggle logic
         const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
         const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+        const themeToggleBtn = document.getElementById('theme-toggle');
 
-        // Change the icons inside the button based on previous settings
-        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        if (document.documentElement.classList.contains('dark')) {
             themeToggleLightIcon.classList.remove('hidden');
         } else {
             themeToggleDarkIcon.classList.remove('hidden');
         }
 
-        const themeToggleBtn = document.getElementById('theme-toggle');
-
-        themeToggleBtn.addEventListener('click', function () {
-            // toggle icons inside button
+        themeToggleBtn.addEventListener('click', () => {
             themeToggleDarkIcon.classList.toggle('hidden');
             themeToggleLightIcon.classList.toggle('hidden');
 
-            // if set via local storage previously
-            if (localStorage.getItem('color-theme')) {
-                if (localStorage.getItem('color-theme') === 'light') {
-                    document.documentElement.classList.add('dark');
-                    localStorage.setItem('color-theme', 'dark');
-                } else {
-                    document.documentElement.classList.remove('dark');
-                    localStorage.setItem('color-theme', 'light');
-                }
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
             } else {
-                // if NOT set via local storage previously
-                if (document.documentElement.classList.contains('dark')) {
-                    document.documentElement.classList.remove('dark');
-                    localStorage.setItem('color-theme', 'light');
-                } else {
-                    document.documentElement.classList.add('dark');
-                    localStorage.setItem('color-theme', 'dark');
-                }
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
             }
         });
     </script>
